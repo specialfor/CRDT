@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BB87523244779E700C38A54 /* CRDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB87522244779E700C38A54 /* CRDT.swift */; };
+		4BB8752524477A6A00C38A54 /* GCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB8752424477A6A00C38A54 /* GCounterTest.swift */; };
+		4BB87529244785C500C38A54 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB87528244785C500C38A54 /* ArrayExtension.swift */; };
+		4BB8752E244787E000C38A54 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB8752D244787E000C38A54 /* ArrayExtensionTests.swift */; };
 		4BEC64A524477398004B5FC6 /* CRDT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BEC649B24477398004B5FC6 /* CRDT.framework */; };
-		4BEC64AA24477398004B5FC6 /* CRDTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC64A924477398004B5FC6 /* CRDTTests.swift */; };
 		4BEC64AC24477398004B5FC6 /* CRDT.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BEC649E24477398004B5FC6 /* CRDT.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BEC64B6244773AE004B5FC6 /* GCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC64B5244773AE004B5FC6 /* GCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +27,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4BB87522244779E700C38A54 /* CRDT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDT.swift; sourceTree = "<group>"; };
+		4BB8752424477A6A00C38A54 /* GCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCounterTest.swift; sourceTree = "<group>"; };
+		4BB87528244785C500C38A54 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		4BB8752D244787E000C38A54 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
 		4BEC649B24477398004B5FC6 /* CRDT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CRDT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BEC649E24477398004B5FC6 /* CRDT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRDT.h; sourceTree = "<group>"; };
 		4BEC649F24477398004B5FC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BEC64A424477398004B5FC6 /* CRDTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CRDTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BEC64A924477398004B5FC6 /* CRDTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDTTests.swift; sourceTree = "<group>"; };
 		4BEC64AB24477398004B5FC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BEC64B5244773AE004B5FC6 /* GCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +58,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BB87526244785AD00C38A54 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4BB87522244779E700C38A54 /* CRDT.swift */,
+				4BEC64B5244773AE004B5FC6 /* GCounter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4BB87527244785B100C38A54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4BB87528244785C500C38A54 /* ArrayExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4BB875302447895C00C38A54 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4BB87526244785AD00C38A54 /* Base */,
+				4BB87527244785B100C38A54 /* Extensions */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4BB875312447896900C38A54 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4BB875322447896C00C38A54 /* Base */,
+				4BB875332447896F00C38A54 /* Extensions */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4BB875322447896C00C38A54 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4BB8752424477A6A00C38A54 /* GCounterTest.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4BB875332447896F00C38A54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4BB8752D244787E000C38A54 /* ArrayExtensionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4BEC649124477398004B5FC6 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +132,7 @@
 			children = (
 				4BEC649E24477398004B5FC6 /* CRDT.h */,
 				4BEC649F24477398004B5FC6 /* Info.plist */,
+				4BB875302447895C00C38A54 /* Sources */,
 			);
 			path = CRDT;
 			sourceTree = "<group>";
@@ -80,7 +140,7 @@
 		4BEC64A824477398004B5FC6 /* CRDTTests */ = {
 			isa = PBXGroup;
 			children = (
-				4BEC64A924477398004B5FC6 /* CRDTTests.swift */,
+				4BB875312447896900C38A54 /* Sources */,
 				4BEC64AB24477398004B5FC6 /* Info.plist */,
 			);
 			path = CRDTTests;
@@ -148,6 +208,7 @@
 				TargetAttributes = {
 					4BEC649A24477398004B5FC6 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 					};
 					4BEC64A324477398004B5FC6 = {
 						CreatedOnToolsVersion = 11.3;
@@ -195,6 +256,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB87529244785C500C38A54 /* ArrayExtension.swift in Sources */,
+				4BB87523244779E700C38A54 /* CRDT.swift in Sources */,
+				4BEC64B6244773AE004B5FC6 /* GCounter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BEC64AA24477398004B5FC6 /* CRDTTests.swift in Sources */,
+				4BB8752524477A6A00C38A54 /* GCounterTest.swift in Sources */,
+				4BB8752E244787E000C38A54 /* ArrayExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +405,7 @@
 		4BEC64B024477398004B5FC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MQ7UXJJ9YY;
@@ -356,6 +422,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.specialfor.CRDT;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +431,7 @@
 		4BEC64B124477398004B5FC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MQ7UXJJ9YY;
@@ -388,6 +456,7 @@
 		4BEC64B324477398004B5FC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MQ7UXJJ9YY;
 				INFOPLIST_FILE = CRDTTests/Info.plist;
@@ -406,6 +475,7 @@
 		4BEC64B424477398004B5FC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MQ7UXJJ9YY;
 				INFOPLIST_FILE = CRDTTests/Info.plist;
