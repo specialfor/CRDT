@@ -12,7 +12,6 @@ public protocol CRDT: Comparable {
     var replicaNumber: Int { get }
     var value: Value { get }
 
-    mutating func update()
     mutating func merge(_ crdt: Self)
 
     func hasConflict(with crdt: Self) -> Bool

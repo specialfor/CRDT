@@ -11,6 +11,8 @@
 		4BB8752524477A6A00C38A54 /* GCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB8752424477A6A00C38A54 /* GCounterTest.swift */; };
 		4BB87529244785C500C38A54 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB87528244785C500C38A54 /* ArrayExtension.swift */; };
 		4BB8752E244787E000C38A54 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB8752D244787E000C38A54 /* ArrayExtensionTests.swift */; };
+		4BB87536244789B900C38A54 /* PNCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB87535244789B900C38A54 /* PNCounter.swift */; };
+		4BB8753924478C1D00C38A54 /* PNCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB8753824478C1D00C38A54 /* PNCounterTest.swift */; };
 		4BEC64A524477398004B5FC6 /* CRDT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BEC649B24477398004B5FC6 /* CRDT.framework */; };
 		4BEC64AC24477398004B5FC6 /* CRDT.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BEC649E24477398004B5FC6 /* CRDT.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BEC64B6244773AE004B5FC6 /* GCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC64B5244773AE004B5FC6 /* GCounter.swift */; };
@@ -31,6 +33,8 @@
 		4BB8752424477A6A00C38A54 /* GCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCounterTest.swift; sourceTree = "<group>"; };
 		4BB87528244785C500C38A54 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		4BB8752D244787E000C38A54 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
+		4BB87535244789B900C38A54 /* PNCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCounter.swift; sourceTree = "<group>"; };
+		4BB8753824478C1D00C38A54 /* PNCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCounterTest.swift; sourceTree = "<group>"; };
 		4BEC649B24477398004B5FC6 /* CRDT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CRDT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BEC649E24477398004B5FC6 /* CRDT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRDT.h; sourceTree = "<group>"; };
 		4BEC649F24477398004B5FC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,8 +65,8 @@
 		4BB87526244785AD00C38A54 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4BB87534244789A700C38A54 /* Counters */,
 				4BB87522244779E700C38A54 /* CRDT.swift */,
-				4BEC64B5244773AE004B5FC6 /* GCounter.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -96,7 +100,7 @@
 		4BB875322447896C00C38A54 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				4BB8752424477A6A00C38A54 /* GCounterTest.swift */,
+				4BB8753724478C1100C38A54 /* Counters */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -107,6 +111,24 @@
 				4BB8752D244787E000C38A54 /* ArrayExtensionTests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4BB87534244789A700C38A54 /* Counters */ = {
+			isa = PBXGroup;
+			children = (
+				4BEC64B5244773AE004B5FC6 /* GCounter.swift */,
+				4BB87535244789B900C38A54 /* PNCounter.swift */,
+			);
+			path = Counters;
+			sourceTree = "<group>";
+		};
+		4BB8753724478C1100C38A54 /* Counters */ = {
+			isa = PBXGroup;
+			children = (
+				4BB8752424477A6A00C38A54 /* GCounterTest.swift */,
+				4BB8753824478C1D00C38A54 /* PNCounterTest.swift */,
+			);
+			path = Counters;
 			sourceTree = "<group>";
 		};
 		4BEC649124477398004B5FC6 = {
@@ -256,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB87536244789B900C38A54 /* PNCounter.swift in Sources */,
 				4BB87529244785C500C38A54 /* ArrayExtension.swift in Sources */,
 				4BB87523244779E700C38A54 /* CRDT.swift in Sources */,
 				4BEC64B6244773AE004B5FC6 /* GCounter.swift in Sources */,
@@ -267,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB8752524477A6A00C38A54 /* GCounterTest.swift in Sources */,
+				4BB8753924478C1D00C38A54 /* PNCounterTest.swift in Sources */,
 				4BB8752E244787E000C38A54 /* ArrayExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

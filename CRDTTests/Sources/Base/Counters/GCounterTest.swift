@@ -19,7 +19,7 @@ final class GCounterTest: XCTestCase {
         XCTAssert(counter.value == 11)
     }
 
-    // MARK: - Increment
+    // MARK: - Update
 
     func testIncrement_incement_correctElement() {
         let replicaNumber = 2
@@ -42,16 +42,13 @@ final class GCounterTest: XCTestCase {
         XCTAssertEqual(counter.vector, [3, 2, 3])
     }
 
-    // MARK: - Update
-
-    func testUpdate_calls_increment() {
-        var counter: GCounter = [3, 2, 0]
-        counter.replicaNumber = 2
-
-        counter.update()
-
-        XCTAssertEqual(counter.vector, [3, 2, 1])
-    }
+    #warning("need to think")
+//    func testIncrement_replicaNumberGreaterThanUnderlyingVectorLength_fail() {
+//        var counter: GCounter = []
+//        counter.replicaNumber = 1
+//
+//        counter.increment()
+//    }
 
     // MARK: - Merge
 
@@ -86,41 +83,67 @@ final class GCounterTest: XCTestCase {
         let rhs: GCounter = [2, 1]
 
         XCTAssertTrue(lhs.hasConflict(with: rhs))
-        XCTAssertTrue(rhs.hasConflict(with: lhs))
     }
 
     func testHasConflict_sequentialChange_false() {
         let lhs: GCounter = [1, 2]
-        let rhs1: GCounter = [0, 1]
+        let rhs1: GCounter = [0, 2]
         let rhs2: GCounter = [2, 3]
         let rhs3: GCounter = [1, 2]
 
         XCTAssertFalse(lhs.hasConflict(with: rhs1))
         XCTAssertFalse(lhs.hasConflict(with: rhs2))
         XCTAssertFalse(lhs.hasConflict(with: rhs3))
-
-        XCTAssertFalse(rhs1.hasConflict(with: lhs))
-        XCTAssertFalse(rhs2.hasConflict(with: lhs))
-        XCTAssertFalse(rhs3.hasConflict(with: lhs))
     }
 
     // MARK: - Compare
 
-    func testCompare_compare_byComponents() {
-        let pairs: [(lhs: GCounter, rhs: GCounter)] = [
+    func testCompare_less_byComponents() {
+        testCompare(expectedResult: [
+            true,
+            false,
+            false,
+            false,
+        ], comparator: <)
+    }
+
+    func testCompare_lessOrEqual_byComponents() {
+        testCompare(expectedResult: [
+            true,
+            false,
+            true,
+            false,
+        ], comparator: <=)
+    }
+
+    func testCompare_greater_byComponents() {
+        testCompare(expectedResult: [
+            false,
+            false,
+            false,
+            true,
+        ], comparator: >)
+    }
+
+    func testCompare_greaterOrEqual_byComponents() {
+        testCompare(expectedResult: [
+            false,
+            false,
+            true,
+            true,
+        ], comparator: >=)
+    }
+
+    private func testCompare(expectedResult: [Bool], comparator: (GCounter, GCounter) -> Bool) {
+        let comparePairs: [(lhs: GCounter, rhs: GCounter)] = [
             ([1, 2, 3], [2, 3, 4]),
             ([1, 2, 3], [2, 1, 4]),
             ([1, 2, 3], [1, 2, 3]),
+            ([1, 2, 3], [1, 0, 3]),
         ]
 
-        let expectedResult = [
-            true,
-            false,
-            false
-        ]
-
-        let actualResults = pairs.reduce(into: []) { result, pair in
-            result.append(pair.lhs < pair.rhs)
+        let actualResults = comparePairs.reduce(into: []) { result, pair in
+            result.append(comparator(pair.lhs, pair.rhs))
         }
 
         XCTAssertEqual(actualResults, expectedResult)

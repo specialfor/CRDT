@@ -9,27 +9,22 @@
 public struct GCounter: CRDT {
     var vector: [Int] = []
 
+    #warning("Need to think...")
     public internal(set) var replicaNumber: Int = 0
+
+    // MARK: - CRDT
 
     public var value: Int {
         return vector.reduce(0, +)
     }
-
-    // MARK: - Update
 
     public mutating func increment() {
         precondition(replicaNumber < vector.count, "Replica number is out of range")
         vector[replicaNumber] += 1
     }
 
-    public mutating func update() {
-        increment()
-    }
-
-    // MARK: - Merge
-
-    public mutating func merge(_ rhs: GCounter) {
-        var rhsVector = rhs.vector
+    public mutating func merge(_ counter: GCounter) {
+        var rhsVector = counter.vector
         normalize(&vector, &rhsVector)
 
         vector = zip(vector, rhsVector).reduce(into: []) { (result, pair) in
@@ -50,22 +45,31 @@ public struct GCounter: CRDT {
         }
     }
 
-    // MARK: - hasConflict
-
-    public func hasConflict(with crdt: GCounter) -> Bool {
-        let isLess = self < crdt
-        let isGreater = self > crdt
-        let isEqual = self.vector == crdt.vector
-        return !(isLess || isGreater || isEqual)
+    public func hasConflict(with crdt: GCounter) -> Bool { 
+        let isLessOrEqual = self <= crdt
+        let isGreaterOrEqual = self >= crdt
+        return !(isLessOrEqual || isGreaterOrEqual)
     }
 
     // MARK: - Comparable
 
     public static func < (lhs: GCounter, rhs: GCounter) -> Bool {
-        return zip(lhs.vector, rhs.vector).allSatisfy { $0 < $1 }
+        return zip(lhs.vector, rhs.vector).allSatisfy { $0 <= $1 } && lhs != rhs
+    }
+
+    public static func <= (lhs: GCounter, rhs: GCounter) -> Bool {
+        return zip(lhs.vector, rhs.vector).allSatisfy { $0 <= $1 }
+    }
+
+    public static func > (lhs: GCounter, rhs: GCounter) -> Bool {
+        return zip(lhs.vector, rhs.vector).allSatisfy { $0 >= $1 } && lhs != rhs
+    }
+
+    public static func >= (lhs: GCounter, rhs: GCounter) -> Bool {
+        return zip(lhs.vector, rhs.vector).allSatisfy { $0 >= $1 }
     }
 
     public static func == (lhs: GCounter, rhs: GCounter) -> Bool {
-        return lhs.vector == rhs.vector && lhs.replicaNumber == rhs.replicaNumber
+        return lhs.vector == rhs.vector
     }
 }
