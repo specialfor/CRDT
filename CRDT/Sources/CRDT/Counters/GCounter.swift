@@ -7,12 +7,10 @@
 //
 
 public struct GCounter: CRDT {
-    var vector: [Int] = []
+    var vector = VersionVector()
 
     #warning("Need to think...")
     public internal(set) var replicaNumber: Int = 0
-
-    // MARK: - CRDT
 
     public var value: Int {
         return vector.reduce(0, +)
@@ -24,51 +22,37 @@ public struct GCounter: CRDT {
     }
 
     public mutating func merge(_ counter: GCounter) {
-        var rhsVector = counter.vector
-        normalize(&vector, &rhsVector)
-
-        vector = zip(vector, rhsVector).reduce(into: []) { (result, pair) in
-            let maximumElement = max(pair.0, pair.1)
-            result.append(maximumElement)
-        }
+        vector.merge(counter.vector)
     }
 
-    func normalize(_ lhs: inout [Int], _ rhs: inout [Int]) {
-        guard lhs.count != rhs.count else {
-            return
-        }
-
-        if lhs.count < rhs.count {
-            lhs.fillUp(by: 0, to: rhs.count)
-        } else {
-            rhs.fillUp(by: 0, to: lhs.count)
-        }
+    public func hasConflict(with counter: GCounter) -> Bool {
+        return vector.hasConflict(with: counter.vector)
     }
+}
 
-    public func hasConflict(with crdt: GCounter) -> Bool { 
-        let isLessOrEqual = self <= crdt
-        let isGreaterOrEqual = self >= crdt
-        return !(isLessOrEqual || isGreaterOrEqual)
-    }
+// MARK: - Comparable
 
-    // MARK: - Comparable
-
+extension GCounter: Comparable {
     public static func < (lhs: GCounter, rhs: GCounter) -> Bool {
-        return zip(lhs.vector, rhs.vector).allSatisfy { $0 <= $1 } && lhs != rhs
+        return lhs.vector < rhs.vector
     }
 
     public static func <= (lhs: GCounter, rhs: GCounter) -> Bool {
-        return zip(lhs.vector, rhs.vector).allSatisfy { $0 <= $1 }
+        return lhs.vector <= rhs.vector
     }
 
     public static func > (lhs: GCounter, rhs: GCounter) -> Bool {
-        return zip(lhs.vector, rhs.vector).allSatisfy { $0 >= $1 } && lhs != rhs
+        return lhs.vector > rhs.vector
     }
 
     public static func >= (lhs: GCounter, rhs: GCounter) -> Bool {
-        return zip(lhs.vector, rhs.vector).allSatisfy { $0 >= $1 }
+        return lhs.vector >= rhs.vector
     }
+}
 
+// MARK: - Equatable
+
+extension GCounter: Equatable {
     public static func == (lhs: GCounter, rhs: GCounter) -> Bool {
         return lhs.vector == rhs.vector
     }

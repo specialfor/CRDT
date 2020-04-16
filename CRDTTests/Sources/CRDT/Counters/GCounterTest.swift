@@ -52,28 +52,21 @@ final class GCounterTest: XCTestCase {
 
     // MARK: - Merge
 
-    func testMerge_merge_byMaxComponent() {
-        var lhs: GCounter = [3, 2, 1]
+    func testMerge_success() {
+        var lhs1: GCounter = [3, 2, 1]
+        var lhs2: GCounter = [1, 2, 3]
+        var lhs3: GCounter = [1, 2, 3, 4, 5]
 
-        lhs.merge([1, 4, 3])
+        let rhs1: GCounter = [1, 4, 3]
+        let rhs23: GCounter = [4, 3, 2, 1]
 
-        XCTAssertEqual(lhs.vector, [3, 4, 3])
-        XCTAssertEqual(lhs.value, 10)
-    }
+        lhs1.merge(rhs1)
+        lhs2.merge(rhs23)
+        lhs3.merge(rhs23)
 
-    func testMerge_mergeDifferentLength_normalizeToMaxLength() {
-        var lhsLess: GCounter = [1, 2, 3]
-        var lhsGreater: GCounter = [1, 2, 3, 4, 5]
-        let rhs: GCounter = [4, 3, 2, 1]
-
-        lhsLess.merge(rhs)
-        lhsGreater.merge(rhs)
-
-        XCTAssertEqual(lhsLess.vector, [4, 3, 3, 1])
-        XCTAssertEqual(lhsLess.value, 11)
-
-        XCTAssertEqual(lhsGreater, [4, 3, 3, 4, 5])
-        XCTAssertEqual(lhsGreater.value, 19)
+        XCTAssertEqual(lhs1, [3, 4, 3])
+        XCTAssertEqual(lhs2, [4, 3, 3, 1])
+        XCTAssertEqual(lhs3, [4, 3, 3, 4, 5])
     }
 
     // MARK: - hasConflict
@@ -155,6 +148,6 @@ final class GCounterTest: XCTestCase {
 extension GCounter: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: Int...) {
         self.init()
-        self.vector = elements
+        self.vector = VersionVector(elements)
     }
 }
