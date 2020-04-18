@@ -16,3 +16,11 @@ public protocol CRDT: Comparable {
 
     func hasConflict(with crdt: Self) -> Bool
 }
+
+extension CRDT {
+    func merging(_ crdt: Self) -> Self {
+        var temp = self
+        temp.merge(crdt)
+        return temp
+    }
+}
