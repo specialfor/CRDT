@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B77EE9A244A115200F072F8 /* MVRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B77EE99244A115200F072F8 /* MVRegister.swift */; };
+		4B77EE9C244A116200F072F8 /* MVRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B77EE9B244A116200F072F8 /* MVRegisterTests.swift */; };
 		4BB87523244779E700C38A54 /* CRDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB87522244779E700C38A54 /* CRDT.swift */; };
 		4BB8752524477A6A00C38A54 /* GCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB8752424477A6A00C38A54 /* GCounterTest.swift */; };
 		4BB87529244785C500C38A54 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB87528244785C500C38A54 /* ArrayExtension.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B77EE99244A115200F072F8 /* MVRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVRegister.swift; sourceTree = "<group>"; };
+		4B77EE9B244A116200F072F8 /* MVRegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVRegisterTests.swift; sourceTree = "<group>"; };
 		4BB87522244779E700C38A54 /* CRDT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDT.swift; sourceTree = "<group>"; };
 		4BB8752424477A6A00C38A54 /* GCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCounterTest.swift; sourceTree = "<group>"; };
 		4BB87528244785C500C38A54 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB8753B2448CFFC00C38A54 /* LWWRegister.swift */,
+				4B77EE99244A115200F072F8 /* MVRegister.swift */,
 			);
 			path = Registers;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB875422448D3BD00C38A54 /* LWWRegisterTests.swift */,
+				4B77EE9B244A116200F072F8 /* MVRegisterTests.swift */,
 			);
 			path = Registers;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB875402448D0C000C38A54 /* Timestamp.swift in Sources */,
+				4B77EE9A244A115200F072F8 /* MVRegister.swift in Sources */,
 				4BB87536244789B900C38A54 /* PNCounter.swift in Sources */,
 				4BB87529244785C500C38A54 /* ArrayExtension.swift in Sources */,
 				4BB87523244779E700C38A54 /* CRDT.swift in Sources */,
@@ -344,6 +351,7 @@
 				4BB8753924478C1D00C38A54 /* PNCounterTest.swift in Sources */,
 				4BB8752E244787E000C38A54 /* ArrayExtensionTests.swift in Sources */,
 				4BB875432448D3BD00C38A54 /* LWWRegisterTests.swift in Sources */,
+				4B77EE9C244A116200F072F8 /* MVRegisterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

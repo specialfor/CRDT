@@ -7,6 +7,8 @@
 //
 
 public struct VersionVector {
+    static let initial: VersionVector = [0]
+
     public private(set) var elements: [Int] = []
 
     init(_ elements: [Int]) {
@@ -111,7 +113,7 @@ extension VersionVector: Comparable {
 
 // MARK: - Equatable
 
-extension VersionVector: Equatable {
+extension VersionVector: Hashable {
     public static func == (lhs: VersionVector, rhs: VersionVector) -> Bool {
         return lhs.elements == rhs.elements
     }
