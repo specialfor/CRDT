@@ -10,7 +10,7 @@ import XCTest
 
 @testable import CRDT
 
-final class LWWRegisterTests: XCTestCase {
+final class LWWRegisterTests: TestCase {
 
     // MARK: - Init
 
@@ -32,7 +32,6 @@ final class LWWRegisterTests: XCTestCase {
 
     func testValue_get_returnValueFromInit() {
         let register = LWWRegister(5)
-
         XCTAssertEqual(register.value, 5)
     }
 

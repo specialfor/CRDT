@@ -6,33 +6,11 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public protocol CRDTSet: CRDT, Collection, SetAlgebra where Element: Hashable, Value == Set<Element>, Index == Set<Element>.Index, ArrayLiteralElement == Element {
-}
+public protocol CRDTSet: CRDT, Collection, ExpressibleByArrayLiteral where Element: Hashable, Value == Set<Element>, Index == Set<Element>.Index, ArrayLiteralElement == Element {
 
-// MARK: - SetAlgebra
-
-extension CRDTSet {
-    public func union(_ other: Self) -> Self {
-        var temp = self
-        temp.formUnion(other)
-        return temp
-    }
-
-    public func intersection(_ other: Self) -> Self {
-        var temp = self
-        temp.formIntersection(other)
-        return temp
-    }
-
-    public func symmetricDifference(_ other: Self) -> Self {
-        var temp = self
-        temp.formSymmetricDifference(other)
-        return temp
-    }
-
-    public func contains(_ member: Element) -> Bool {
-        return value.contains(member)
-    }
+    mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element)
+    mutating func remove(_ member: Element) -> Element?
+    mutating func update(with newMember: Element) -> Element?
 }
 
 // MARK: - Collection
@@ -52,6 +30,10 @@ extension CRDTSet {
 
     public subscript(position: Index) -> Element {
         return value[position]
+    }
+
+    public func contains(_ member: Element) -> Bool {
+        return value.contains(member)
     }
 }
 

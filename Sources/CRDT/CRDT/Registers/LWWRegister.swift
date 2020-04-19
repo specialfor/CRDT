@@ -13,7 +13,7 @@ public struct LWWRegister<T: Equatable>: CRDT {
         get { return _value }
         set {
             _value = newValue
-            timestamp = timestamp.now
+            timestamp = .now
         }
     }
     private var _value: T

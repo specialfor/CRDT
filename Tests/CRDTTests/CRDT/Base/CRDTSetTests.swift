@@ -24,42 +24,6 @@ final class CRDTSetTests: XCTestCase {
         XCTAssertEqual(set.value as! Set<Int>, Set([1, 2, 3, 4]))
     }
 
-    // MARK: - Union
-
-    func testUnion_withSame_equalsSame() {
-        let set: some CRDTSet = [1, 2] as GSet<Int>
-        XCTAssertEqual(set.union(set).value, set.value)
-    }
-
-    func testUnion_withEmpty_equalInitial() {
-        let set: some CRDTSet = [1, 2] as GSet<Int>
-        XCTAssertEqual(set.union([]).value, set.value)
-    }
-
-    // MARK: - Intersection
-
-    func testIntersection_withSame_equalsSame() {
-        let set: some CRDTSet = [1, 2] as GSet<Int>
-        XCTAssertEqual(set.intersection(set).value, set.value)
-    }
-
-    func testIntersection_withEmpty_equalsEmpty() {
-        let set: some CRDTSet = [1, 2] as GSet<Int>
-        XCTAssertEqual(set.intersection([]).value, [])
-    }
-
-    // MARK: - SymmetricDifference
-
-    func testSymmetricDifference_withSame_equalsSame() {
-        let set: some CRDTSet = [1, 2] as GSet<Int>
-        XCTAssertEqual(set.symmetricDifference(set).value, [])
-    }
-
-    func testSymmetricDifference_withEmpty_equalsEmpty() {
-        let set: some CRDTSet = [1, 2] as GSet<Int>
-        XCTAssertEqual(set.symmetricDifference([]).value, set.value)
-    }
-
     // MARK: - isEmpty
 
     func testIsEmpty_onEmpty_true() {

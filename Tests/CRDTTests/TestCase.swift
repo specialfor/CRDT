@@ -13,6 +13,8 @@ class TestCase: XCTestCase {
     private(set) var assertionFailureExpectation: XCTestExpectation!
 
     override func setUp() {
+        Timestamp.current = 0
+
         assertionFailureExpectation = XCTestExpectation()
         assertionFailureClosure = { [weak self] _, _, _ in
             self?.assertionFailureExpectation.fulfill()

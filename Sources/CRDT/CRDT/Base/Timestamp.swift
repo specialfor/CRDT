@@ -9,8 +9,11 @@
 public typealias Timestamp = Int
 
 public extension Timestamp {
-    var now: Timestamp {
-        return self + 1
+    internal static var current: Timestamp = 0
+
+    static var now: Timestamp {
+        current += 1
+        return current
     }
 }
 

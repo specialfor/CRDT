@@ -11,7 +11,6 @@ import XCTest
 @testable import CRDT
 
 final class GSetTests: TestCase {
-    #warning("review tests for SetAlgebra")
 
     // MARK: - Init
 
@@ -155,46 +154,4 @@ final class GSetTests: TestCase {
         XCTAssertNotEqual(set, notDisjointSet)
         XCTAssertNotEqual(disjointSet, notDisjointSet)
     }
-
-    // MARK: - Union
-
-    func testUnion_withDifferent_equalsUnion() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [3]
-
-        XCTAssertEqual(lhs.union(rhs), [1, 2, 3])
-    }
-
-    // MARK: - Intersection
-
-    func testIntersection_withSuperset_equalInitial() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [1, 2, 3]
-
-        XCTAssertEqual(lhs.intersection(rhs), [1, 2])
-    }
-
-    func testIntersection_withDisjoint_equalsEmpty() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [3]
-
-        XCTAssertEqual(lhs.intersection(rhs), [])
-    }
-
-    // MARK: - SymmetricDifference
-
-    func testSymmetricDifference_withSuperset_equalInitial() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [1, 2, 3]
-
-        XCTAssertEqual(lhs.symmetricDifference(rhs), [3])
-    }
-
-    func testSymmetricDifference_onDisjoints_equalsUnion() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [3]
-
-        XCTAssertEqual(lhs.symmetricDifference(rhs), lhs.union(rhs))
-    }
-
 }

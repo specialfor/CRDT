@@ -22,6 +22,9 @@
 
 /* Begin PBXBuildFile section */
 		4B340240244C5D330014D693 /* TPSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96558C244C5CD700DF8E9C /* TPSetTests.swift */; };
+		4B340243244C862D0014D693 /* ORSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340241244C86230014D693 /* ORSetTests.swift */; };
+		4B340245244C86400014D693 /* ORSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340244244C86400014D693 /* ORSet.swift */; };
+		4B340247244C92790014D693 /* AWSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340246244C92790014D693 /* AWSet.swift */; };
 		4BF7DCA9244C4545004032EE /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCA8244C4545004032EE /* Assert.swift */; };
 		4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAC244C476A004032EE /* TestCase.swift */; };
 		4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAF244C541C004032EE /* TPSet.swift */; };
@@ -67,6 +70,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B340241244C86230014D693 /* ORSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSetTests.swift; sourceTree = "<group>"; };
+		4B340244244C86400014D693 /* ORSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSet.swift; sourceTree = "<group>"; };
+		4B340246244C92790014D693 /* AWSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSet.swift; sourceTree = "<group>"; };
 		4B96558C244C5CD700DF8E9C /* TPSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSetTests.swift; sourceTree = "<group>"; };
 		4BF7DCA8244C4545004032EE /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		4BF7DCAC244C476A004032EE /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
@@ -156,7 +162,9 @@
 		OBJ_21 /* Sets */ = {
 			isa = PBXGroup;
 			children = (
+				4B340246244C92790014D693 /* AWSet.swift */,
 				OBJ_22 /* GSet.swift */,
+				4B340244244C86400014D693 /* ORSet.swift */,
 				4BF7DCAF244C541C004032EE /* TPSet.swift */,
 			);
 			path = Sets;
@@ -233,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_38 /* GSetTests.swift */,
+				4B340241244C86230014D693 /* ORSetTests.swift */,
 				4B96558C244C5CD700DF8E9C /* TPSetTests.swift */,
 			);
 			path = Sets;
@@ -387,6 +396,8 @@
 				OBJ_55 /* VersionVector.swift in Sources */,
 				OBJ_56 /* GCounter.swift in Sources */,
 				OBJ_57 /* PNCounter.swift in Sources */,
+				4B340245244C86400014D693 /* ORSet.swift in Sources */,
+				4B340247244C92790014D693 /* AWSet.swift in Sources */,
 				OBJ_58 /* LWWRegister.swift in Sources */,
 				4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */,
 				OBJ_59 /* MVRegister.swift in Sources */,
@@ -407,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				4B340243244C862D0014D693 /* ORSetTests.swift in Sources */,
 				OBJ_79 /* CRDTSetTests.swift in Sources */,
 				OBJ_80 /* VersionVectorTests.swift in Sources */,
 				4B340240244C5D330014D693 /* TPSetTests.swift in Sources */,
