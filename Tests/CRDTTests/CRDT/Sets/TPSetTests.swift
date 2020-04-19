@@ -10,6 +10,7 @@ import XCTest
 @testable import CRDT
 
 final class TPSetTests: TestCase {
+    #warning("review tests for SetAlgebra")
 
     // MARK: - Init
 

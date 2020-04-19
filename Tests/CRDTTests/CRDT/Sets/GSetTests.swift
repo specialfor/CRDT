@@ -11,6 +11,7 @@ import XCTest
 @testable import CRDT
 
 final class GSetTests: TestCase {
+    #warning("review tests for SetAlgebra")
 
     // MARK: - Init
 
@@ -22,13 +23,44 @@ final class GSetTests: TestCase {
 
     // MARK: - Insert
 
-    func testInsert_element_intoValue() {
-        var set: GSet<Int> = [1]
+    func testInsert_elementNotExistsInSet_success() {
+        var set: GSet = [1, 2]
 
-        set.insert(1)
-        set.insert(2)
+        let result: (inserted: Bool, memberAfterInsert: Int) = set.insert(3)
 
-        XCTAssertEqual(set.value, [1, 2])
+        XCTAssertEqual(set.value, Set([1, 2, 3]))
+        XCTAssertTrue(result.inserted)
+        XCTAssertEqual(result.memberAfterInsert, 3)
+    }
+
+    func testInsert_elementExistsInSet_failure() {
+        var set: GSet = [1, 2]
+
+        let result: (inserted: Bool, memberAfterInsert: Int) = set.insert(2)
+
+        XCTAssertEqual(set.value, Set([1, 2]))
+        XCTAssertFalse(result.inserted)
+        XCTAssertEqual(result.memberAfterInsert, 2)
+    }
+
+    // MAKR: - Update
+
+    func testUpdate_existedElement_element() {
+        var set: GSet = [1, 2]
+
+        let result = set.update(with: 2)
+
+        XCTAssertEqual(result, 2)
+        XCTAssertEqual(set.value, Set([1, 2]))
+    }
+
+    func testUpdate_notExistedElement_nil() {
+        var set: GSet = [1, 2]
+
+        let result = set.update(with: 3)
+
+        XCTAssertNil(result)
+        XCTAssertEqual(set.value, Set([1, 2, 3]))
     }
 
     // MARK: - Remove
@@ -123,4 +155,46 @@ final class GSetTests: TestCase {
         XCTAssertNotEqual(set, notDisjointSet)
         XCTAssertNotEqual(disjointSet, notDisjointSet)
     }
+
+    // MARK: - Union
+
+    func testUnion_withDifferent_equalsUnion() {
+        let lhs: GSet = [1, 2]
+        let rhs: GSet = [3]
+
+        XCTAssertEqual(lhs.union(rhs), [1, 2, 3])
+    }
+
+    // MARK: - Intersection
+
+    func testIntersection_withSuperset_equalInitial() {
+        let lhs: GSet = [1, 2]
+        let rhs: GSet = [1, 2, 3]
+
+        XCTAssertEqual(lhs.intersection(rhs), [1, 2])
+    }
+
+    func testIntersection_withDisjoint_equalsEmpty() {
+        let lhs: GSet = [1, 2]
+        let rhs: GSet = [3]
+
+        XCTAssertEqual(lhs.intersection(rhs), [])
+    }
+
+    // MARK: - SymmetricDifference
+
+    func testSymmetricDifference_withSuperset_equalInitial() {
+        let lhs: GSet = [1, 2]
+        let rhs: GSet = [1, 2, 3]
+
+        XCTAssertEqual(lhs.symmetricDifference(rhs), [3])
+    }
+
+    func testSymmetricDifference_onDisjoints_equalsUnion() {
+        let lhs: GSet = [1, 2]
+        let rhs: GSet = [3]
+
+        XCTAssertEqual(lhs.symmetricDifference(rhs), lhs.union(rhs))
+    }
+
 }

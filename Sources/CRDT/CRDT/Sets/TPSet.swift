@@ -5,48 +5,31 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct TPSet<T: Hashable>: CRDTMutableSet {
+public struct TPSet<T: Hashable>: CRDTSet {
     #warning("need to think")
     public typealias Element = T
 
     public internal(set) var replicaNumber: Int = 0
 
-    public internal(set) var value: Set<T>
+    public var value: Set<T> {
+        return addedValues.subtracting(removedValues)
+    }
     var addedValues: Set<T>
     var removedValues: Set<T>
 
     public init() {
-        value = []
         addedValues = []
         removedValues = []
     }
 
     public init(arrayLiteral elements: Element...) {
         self.init()
-        value = Set(elements)
-        addedValues = value
-    }
-
-    public mutating func insert(_ element: T) {
-        addedValues.insert(element)
-        if !removedValues.contains(element) {
-            value.insert(element)
-        }
-    }
-
-    public mutating func remove(_ member: T) -> T? {
-        if addedValues.contains(member), !removedValues.contains(member) {
-            removedValues.insert(member)
-            return value.remove(member)
-        }
-
-        return nil
+        addedValues = Set(elements)
     }
 
     public mutating func merge(_ set: TPSet<T>) {
         addedValues.formUnion(set.addedValues)
         removedValues.formUnion(set.removedValues)
-        value = addedValues.subtracting(removedValues)
     }
 
     public func hasConflict(with crdt: TPSet<T>) -> Bool {
@@ -82,5 +65,42 @@ extension TPSet {
     public static func == (lhs: TPSet<T>, rhs: TPSet<T>) -> Bool {
         return lhs.addedValues == rhs.addedValues
             && lhs.removedValues == rhs.removedValues
+    }
+}
+
+// MARK: - SetAlgebra
+
+extension TPSet: SetAlgebra {
+    public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
+        return addedValues.insert(newMember)
+    }
+
+    public mutating func update(with newMember: __owned T) -> T? {
+        let result = insert(newMember)
+        return result.inserted ? newMember : nil
+    }
+
+    public mutating func remove(_ member: T) -> T? {
+        if addedValues.contains(member), !removedValues.contains(member) {
+            removedValues.insert(member)
+            return member
+        }
+        return nil
+    }
+
+    public mutating func formUnion(_ other: TPSet<T>) {
+        addedValues.formUnion(other.addedValues)
+        removedValues.formIntersection(other.removedValues)
+    }
+
+    public mutating func formIntersection(_ other: TPSet<T>) {
+        addedValues.formIntersection(other.addedValues)
+        removedValues.formUnion(other.removedValues)
+    }
+
+    public mutating func formSymmetricDifference(_ other: TPSet<T>) {
+        let union = self.union(other)
+        let intersection = self.intersection(other)
+        self = union.subtracting(intersection)
     }
 }

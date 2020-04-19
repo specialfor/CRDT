@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct GSet<T: Hashable>: CRDTMutableSet {
+public struct GSet<T: Hashable>: CRDTSet {
     #warning("need to think")
     public typealias Element = T
 
@@ -16,15 +16,6 @@ public struct GSet<T: Hashable>: CRDTMutableSet {
 
     public init() {
         value = []
-    }
-
-    public mutating func insert(_ element: T) {
-        value.insert(element)
-    }
-
-    public mutating func remove(_ member: T) -> T? {
-        assertionFailure("Remove shouldn't be called on `GSet`")
-        return nil
     }
 
     public mutating func merge(_ crdt: GSet<T>) {
@@ -61,5 +52,34 @@ extension GSet: Comparable {
 extension GSet: Equatable {
     public static func == (lhs: GSet<T>, rhs: GSet<T>) -> Bool {
         return lhs.value == rhs.value
+    }
+}
+
+// MARK: - SetAlgebra
+
+extension GSet: SetAlgebra {
+    public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
+        return value.insert(newMember)
+    }
+
+    public mutating func update(with newMember: T) -> T? {
+        return value.update(with: newMember)
+    }
+
+    public mutating func remove(_ member: T) -> T? {
+        assertionFailure("Remove shouldn't be called on `GSet`")
+        return nil
+    }
+
+    public mutating func formUnion(_ other: GSet<T>) {
+        value.formUnion(other.value)
+    }
+
+    public mutating func formIntersection(_ other: GSet<T>) {
+        value.formIntersection(other.value)
+    }
+
+    public mutating func formSymmetricDifference(_ other: GSet<T>) {
+        value.formSymmetricDifference(other.value)
     }
 }

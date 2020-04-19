@@ -36,13 +36,6 @@ final class CRDTSetTests: XCTestCase {
         XCTAssertEqual(set.union([]).value, set.value)
     }
 
-    func testUnion_withDifferent_equalsUnion() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [3]
-
-        XCTAssertEqual(lhs.union(rhs), [1, 2, 3])
-    }
-
     // MARK: - Intersection
 
     func testIntersection_withSame_equalsSame() {
@@ -55,20 +48,6 @@ final class CRDTSetTests: XCTestCase {
         XCTAssertEqual(set.intersection([]).value, [])
     }
 
-    func testIntersection_withSuperset_equalInitial() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [1, 2, 3]
-
-        XCTAssertEqual(lhs.intersection(rhs), [1, 2])
-    }
-
-    func testIntersection_withDisjoint_equalsEmpty() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [3]
-
-        XCTAssertEqual(lhs.intersection(rhs), [])
-    }
-
     // MARK: - SymmetricDifference
 
     func testSymmetricDifference_withSame_equalsSame() {
@@ -79,82 +58,6 @@ final class CRDTSetTests: XCTestCase {
     func testSymmetricDifference_withEmpty_equalsEmpty() {
         let set: some CRDTSet = [1, 2] as GSet<Int>
         XCTAssertEqual(set.symmetricDifference([]).value, set.value)
-    }
-
-    func testSymmetricDifference_withSuperset_equalInitial() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [1, 2, 3]
-
-        XCTAssertEqual(lhs.symmetricDifference(rhs), [3])
-    }
-
-    func testSymmetricDifference_onDisjoints_equalsUnion() {
-        let lhs: GSet = [1, 2]
-        let rhs: GSet = [3]
-
-        XCTAssertEqual(lhs.symmetricDifference(rhs), lhs.union(rhs))
-    }
-
-    // MARK: - Insert
-
-    func testInsert_elementNotExistsInSet_success() {
-        var set: GSet = [1, 2]
-
-        let result: (inserted: Bool, memberAfterInsert: Int) = set.insert(3)
-
-        XCTAssertEqual(set.value, Set([1, 2, 3]))
-        XCTAssertTrue(result.inserted)
-        XCTAssertEqual(result.memberAfterInsert, 3)
-    }
-
-    func testInsert_elementExistsInSet_failure() {
-        var set: GSet = [1, 2]
-
-        let result: (inserted: Bool, memberAfterInsert: Int) = set.insert(2)
-
-        XCTAssertEqual(set.value, Set([1, 2]))
-        XCTAssertFalse(result.inserted)
-        XCTAssertEqual(result.memberAfterInsert, 2)
-    }
-
-    // MARK: - Remove
-
-    func testRemove_existedElement_element() {
-        var set: TPSet<Int> = [1, 2]
-
-        let result = set.remove(1)
-
-        XCTAssertEqual(result, 1)
-        XCTAssertEqual(set.value, Set([2]))
-    }
-
-    func testRemove_nonExistedElement_nil() {
-        var set: TPSet<Int> = [1, 2]
-
-        let result = set.remove(3)
-
-        XCTAssertNil(result)
-        XCTAssertEqual(set.value, Set([1, 2]))
-    }
-
-    // MARK: - Update
-
-    func testUpdate_existedElement_element() {
-        var set: GSet = [1, 2]
-
-        let result = set.update(with: 2)
-
-        XCTAssertEqual(result, 2)
-        XCTAssertEqual(set.value, Set([1, 2]))
-    }
-
-    func testUpdate_notExistedElement_nil() {
-        var set: GSet = [1, 2]
-
-        let result = set.update(with: 3)
-
-        XCTAssertNil(result)
-        XCTAssertEqual(set.value, Set([1, 2, 3]))
     }
 
     // MARK: - isEmpty

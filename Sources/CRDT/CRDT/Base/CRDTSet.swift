@@ -7,20 +7,6 @@
 //
 
 public protocol CRDTSet: CRDT, Collection, SetAlgebra where Element: Hashable, Value == Set<Element>, Index == Set<Element>.Index, ArrayLiteralElement == Element {
-    mutating func insert(_ element: Element)
-}
-
-internal protocol CRDTMutableSet: CRDTSet {
-    var value: Value { get set }
-}
-
-// MARK: - ExpressibleByArrayLiteral
-
-extension CRDTMutableSet {
-    public init(arrayLiteral elements: Element...) {
-        self.init()
-        value = Set(elements)
-    }
 }
 
 // MARK: - SetAlgebra
@@ -46,32 +32,6 @@ extension CRDTSet {
 
     public func contains(_ member: Element) -> Bool {
         return value.contains(member)
-    }
-}
-
-extension CRDTMutableSet {
-    public mutating func insert(_ newMember: Self.Element) -> (inserted: Bool, memberAfterInsert: Self.Element) {
-        return value.insert(newMember)
-    }
-
-    public mutating func remove(_ member: Self.Element) -> Self.Element? {
-        return value.remove(member)
-    }
-
-    public mutating func update(with newMember: Self.Element) -> Self.Element? {
-        return value.update(with: newMember)
-    }
-
-    public mutating func formUnion(_ other: Self) {
-        value = value.union(other.value)
-    }
-
-    public mutating func formIntersection(_ other: Self) {
-        value = value.intersection(other.value)
-    }
-
-    public mutating func formSymmetricDifference(_ other: Self) {
-        value = value.symmetricDifference(other.value)
     }
 }
 
