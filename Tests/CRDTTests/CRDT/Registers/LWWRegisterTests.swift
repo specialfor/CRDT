@@ -80,21 +80,21 @@ final class LWWRegisterTests: XCTestCase {
     // MARK: - HasConflict
 
     func testHasConflict_withNewTimestamp_false() {
-        var lhs = LWWRegister(5, timestamp: 0)
+        let lhs = LWWRegister(5, timestamp: 0)
         let rhs = LWWRegister(10, timestamp: 1)
 
         XCTAssertFalse(lhs.hasConflict(with: rhs))
     }
 
     func testHasConflict_withSameTimestamp_false() {
-        var lhs = LWWRegister(5, timestamp: 1)
+        let lhs = LWWRegister(5, timestamp: 1)
         let rhs = LWWRegister(10, timestamp: 1)
 
         XCTAssertFalse(lhs.hasConflict(with: rhs))
     }
 
     func testHasConflict_withOldTimestamp_false() {
-        var lhs = LWWRegister(5, timestamp: 2)
+        let lhs = LWWRegister(5, timestamp: 2)
         let rhs = LWWRegister(10, timestamp: 1)
 
         XCTAssertFalse(lhs.hasConflict(with: rhs))

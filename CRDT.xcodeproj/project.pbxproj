@@ -1,806 +1,672 @@
 // !$*UTF8*$!
 {
-   archiveVersion = "1";
-   objectVersion = "46";
-   objects = {
-      "CRDT::CRDT" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_42";
-         buildPhases = (
-            "OBJ_45",
-            "OBJ_54"
-         );
-         dependencies = (
-         );
-         name = "CRDT";
-         productName = "CRDT";
-         productReference = "CRDT::CRDT::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "CRDT::CRDT::Product" = {
-         isa = "PBXFileReference";
-         path = "CRDT.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "CRDT::CRDTPackageTests::ProductTarget" = {
-         isa = "PBXAggregateTarget";
-         buildConfigurationList = "OBJ_62";
-         buildPhases = (
-         );
-         dependencies = (
-            "OBJ_65"
-         );
-         name = "CRDTPackageTests";
-         productName = "CRDTPackageTests";
-      };
-      "CRDT::CRDTTests" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_67";
-         buildPhases = (
-            "OBJ_70",
-            "OBJ_79"
-         );
-         dependencies = (
-            "OBJ_81"
-         );
-         name = "CRDTTests";
-         productName = "CRDTTests";
-         productReference = "CRDT::CRDTTests::Product";
-         productType = "com.apple.product-type.bundle.unit-test";
-      };
-      "CRDT::CRDTTests::Product" = {
-         isa = "PBXFileReference";
-         path = "CRDTTests.xctest";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "CRDT::SwiftPMPackageDescription" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_56";
-         buildPhases = (
-            "OBJ_59"
-         );
-         dependencies = (
-         );
-         name = "CRDTPackageDescription";
-         productName = "CRDTPackageDescription";
-         productType = "com.apple.product-type.framework";
-      };
-      "OBJ_1" = {
-         isa = "PBXProject";
-         attributes = {
-            LastSwiftMigration = "9999";
-            LastUpgradeCheck = "9999";
-         };
-         buildConfigurationList = "OBJ_2";
-         compatibilityVersion = "Xcode 3.2";
-         developmentRegion = "en";
-         hasScannedForEncodings = "0";
-         knownRegions = (
-            "en"
-         );
-         mainGroup = "OBJ_5";
-         productRefGroup = "OBJ_37";
-         projectDirPath = ".";
-         targets = (
-            "CRDT::CRDT",
-            "CRDT::SwiftPMPackageDescription",
-            "CRDT::CRDTPackageTests::ProductTarget",
-            "CRDT::CRDTTests"
-         );
-      };
-      "OBJ_10" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_11",
-            "OBJ_12",
-            "OBJ_13"
-         );
-         name = "Base";
-         path = "Base";
-         sourceTree = "<group>";
-      };
-      "OBJ_11" = {
-         isa = "PBXFileReference";
-         path = "CRDT.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_12" = {
-         isa = "PBXFileReference";
-         path = "Timestamp.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_13" = {
-         isa = "PBXFileReference";
-         path = "VersionVector.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_14" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_15",
-            "OBJ_16"
-         );
-         name = "Counters";
-         path = "Counters";
-         sourceTree = "<group>";
-      };
-      "OBJ_15" = {
-         isa = "PBXFileReference";
-         path = "GCounter.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_16" = {
-         isa = "PBXFileReference";
-         path = "PNCounter.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_17" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_18",
-            "OBJ_19"
-         );
-         name = "Registers";
-         path = "Registers";
-         sourceTree = "<group>";
-      };
-      "OBJ_18" = {
-         isa = "PBXFileReference";
-         path = "LWWRegister.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_19" = {
-         isa = "PBXFileReference";
-         path = "MVRegister.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_2" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_3",
-            "OBJ_4"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_20" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_21"
-         );
-         name = "Extensions";
-         path = "Extensions";
-         sourceTree = "<group>";
-      };
-      "OBJ_21" = {
-         isa = "PBXFileReference";
-         path = "ArrayExtension.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_22" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_23"
-         );
-         name = "Tests";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_23" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_24",
-            "OBJ_33",
-            "OBJ_34",
-            "OBJ_36"
-         );
-         name = "CRDTTests";
-         path = "Tests/CRDTTests";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_24" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_25",
-            "OBJ_27",
-            "OBJ_30"
-         );
-         name = "CRDT";
-         path = "CRDT";
-         sourceTree = "<group>";
-      };
-      "OBJ_25" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_26"
-         );
-         name = "Base";
-         path = "Base";
-         sourceTree = "<group>";
-      };
-      "OBJ_26" = {
-         isa = "PBXFileReference";
-         path = "VersionVectorTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_27" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_28",
-            "OBJ_29"
-         );
-         name = "Counters";
-         path = "Counters";
-         sourceTree = "<group>";
-      };
-      "OBJ_28" = {
-         isa = "PBXFileReference";
-         path = "GCounterTest.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_29" = {
-         isa = "PBXFileReference";
-         path = "PNCounterTest.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_3" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_OBJC_ARC = "YES";
-            COMBINE_HIDPI_IMAGES = "YES";
-            COPY_PHASE_STRIP = "NO";
-            DEBUG_INFORMATION_FORMAT = "dwarf";
-            DYLIB_INSTALL_NAME_BASE = "@rpath";
-            ENABLE_NS_ASSERTIONS = "YES";
-            GCC_OPTIMIZATION_LEVEL = "0";
-            GCC_PREPROCESSOR_DEFINITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE=1",
-               "DEBUG=1"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            ONLY_ACTIVE_ARCH = "YES";
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-DXcode"
-            );
-            PRODUCT_NAME = "$(TARGET_NAME)";
-            SDKROOT = "macosx";
-            SUPPORTED_PLATFORMS = (
-               "macosx",
-               "iphoneos",
-               "iphonesimulator",
-               "appletvos",
-               "appletvsimulator",
-               "watchos",
-               "watchsimulator"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE",
-               "DEBUG"
-            );
-            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-            USE_HEADERMAP = "NO";
-         };
-         name = "Debug";
-      };
-      "OBJ_30" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_31",
-            "OBJ_32"
-         );
-         name = "Registers";
-         path = "Registers";
-         sourceTree = "<group>";
-      };
-      "OBJ_31" = {
-         isa = "PBXFileReference";
-         path = "LWWRegisterTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_32" = {
-         isa = "PBXFileReference";
-         path = "MVRegisterTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_33" = {
-         isa = "PBXFileReference";
-         path = "CRDTTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_34" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_35"
-         );
-         name = "Extensions";
-         path = "Extensions";
-         sourceTree = "<group>";
-      };
-      "OBJ_35" = {
-         isa = "PBXFileReference";
-         path = "ArrayExtensionTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_36" = {
-         isa = "PBXFileReference";
-         path = "XCTestManifests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_37" = {
-         isa = "PBXGroup";
-         children = (
-            "CRDT::CRDT::Product",
-            "CRDT::CRDTTests::Product"
-         );
-         name = "Products";
-         path = "";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "OBJ_4" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_OBJC_ARC = "YES";
-            COMBINE_HIDPI_IMAGES = "YES";
-            COPY_PHASE_STRIP = "YES";
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-            DYLIB_INSTALL_NAME_BASE = "@rpath";
-            GCC_OPTIMIZATION_LEVEL = "s";
-            GCC_PREPROCESSOR_DEFINITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE=1"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-DXcode"
-            );
-            PRODUCT_NAME = "$(TARGET_NAME)";
-            SDKROOT = "macosx";
-            SUPPORTED_PLATFORMS = (
-               "macosx",
-               "iphoneos",
-               "iphonesimulator",
-               "appletvos",
-               "appletvsimulator",
-               "watchos",
-               "watchsimulator"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE"
-            );
-            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-            USE_HEADERMAP = "NO";
-         };
-         name = "Release";
-      };
-      "OBJ_40" = {
-         isa = "PBXFileReference";
-         path = "README.md";
-         sourceTree = "<group>";
-      };
-      "OBJ_42" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_43",
-            "OBJ_44"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_43" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "CRDT.xcodeproj/CRDT_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "CRDT";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "CRDT";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_44" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "CRDT.xcodeproj/CRDT_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "CRDT";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "CRDT";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
-         name = "Release";
-      };
-      "OBJ_45" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_46",
-            "OBJ_47",
-            "OBJ_48",
-            "OBJ_49",
-            "OBJ_50",
-            "OBJ_51",
-            "OBJ_52",
-            "OBJ_53"
-         );
-      };
-      "OBJ_46" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_11";
-      };
-      "OBJ_47" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_12";
-      };
-      "OBJ_48" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_13";
-      };
-      "OBJ_49" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_15";
-      };
-      "OBJ_5" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_6",
-            "OBJ_7",
-            "OBJ_22",
-            "OBJ_37",
-            "OBJ_40"
-         );
-         path = "";
-         sourceTree = "<group>";
-      };
-      "OBJ_50" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_16";
-      };
-      "OBJ_51" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_18";
-      };
-      "OBJ_52" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_19";
-      };
-      "OBJ_53" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_21";
-      };
-      "OBJ_54" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-         );
-      };
-      "OBJ_56" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_57",
-            "OBJ_58"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_57" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "5",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
-               "-package-description-version",
-               "5.1"
-            );
-            SWIFT_VERSION = "5.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_58" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "5",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
-               "-package-description-version",
-               "5.1"
-            );
-            SWIFT_VERSION = "5.0";
-         };
-         name = "Release";
-      };
-      "OBJ_59" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_60"
-         );
-      };
-      "OBJ_6" = {
-         isa = "PBXFileReference";
-         explicitFileType = "sourcecode.swift";
-         path = "Package.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_60" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_6";
-      };
-      "OBJ_62" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_63",
-            "OBJ_64"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_63" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Debug";
-      };
-      "OBJ_64" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Release";
-      };
-      "OBJ_65" = {
-         isa = "PBXTargetDependency";
-         target = "CRDT::CRDTTests";
-      };
-      "OBJ_67" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_68",
-            "OBJ_69"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_68" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_MODULES = "YES";
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "CRDT.xcodeproj/CRDTTests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "CRDTTests";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_69" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_MODULES = "YES";
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "CRDT.xcodeproj/CRDTTests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "CRDTTests";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
-         name = "Release";
-      };
-      "OBJ_7" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_8"
-         );
-         name = "Sources";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_70" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_71",
-            "OBJ_72",
-            "OBJ_73",
-            "OBJ_74",
-            "OBJ_75",
-            "OBJ_76",
-            "OBJ_77",
-            "OBJ_78"
-         );
-      };
-      "OBJ_71" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_26";
-      };
-      "OBJ_72" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_28";
-      };
-      "OBJ_73" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_29";
-      };
-      "OBJ_74" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_31";
-      };
-      "OBJ_75" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_32";
-      };
-      "OBJ_76" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_33";
-      };
-      "OBJ_77" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_35";
-      };
-      "OBJ_78" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_36";
-      };
-      "OBJ_79" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_80"
-         );
-      };
-      "OBJ_8" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_9",
-            "OBJ_20"
-         );
-         name = "CRDT";
-         path = "Sources/CRDT";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_80" = {
-         isa = "PBXBuildFile";
-         fileRef = "CRDT::CRDT::Product";
-      };
-      "OBJ_81" = {
-         isa = "PBXTargetDependency";
-         target = "CRDT::CRDT";
-      };
-      "OBJ_9" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_10",
-            "OBJ_14",
-            "OBJ_17"
-         );
-         name = "CRDT";
-         path = "CRDT";
-         sourceTree = "<group>";
-      };
-   };
-   rootObject = "OBJ_1";
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"CRDT::CRDTPackageTests::ProductTarget" /* CRDTPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_70 /* Build configuration list for PBXAggregateTarget "CRDTPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_73 /* PBXTargetDependency */,
+			);
+			name = CRDTPackageTests;
+			productName = CRDTPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		4BF7DCA9244C4545004032EE /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCA8244C4545004032EE /* Assert.swift */; };
+		4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAC244C476A004032EE /* TestCase.swift */; };
+		OBJ_52 /* CRDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CRDT.swift */; };
+		OBJ_53 /* CRDTSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CRDTSet.swift */; };
+		OBJ_54 /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Timestamp.swift */; };
+		OBJ_55 /* VersionVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* VersionVector.swift */; };
+		OBJ_56 /* GCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* GCounter.swift */; };
+		OBJ_57 /* PNCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* PNCounter.swift */; };
+		OBJ_58 /* LWWRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* LWWRegister.swift */; };
+		OBJ_59 /* MVRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* MVRegister.swift */; };
+		OBJ_60 /* GSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* GSet.swift */; };
+		OBJ_61 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* ArrayExtension.swift */; };
+		OBJ_68 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_79 /* CRDTSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* CRDTSetTests.swift */; };
+		OBJ_80 /* VersionVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* VersionVectorTests.swift */; };
+		OBJ_81 /* GCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* GCounterTest.swift */; };
+		OBJ_82 /* PNCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* PNCounterTest.swift */; };
+		OBJ_83 /* LWWRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* LWWRegisterTests.swift */; };
+		OBJ_84 /* MVRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* MVRegisterTests.swift */; };
+		OBJ_85 /* GSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* GSetTests.swift */; };
+		OBJ_86 /* CRDTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* CRDTTests.swift */; };
+		OBJ_87 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* ArrayExtensionTests.swift */; };
+		OBJ_88 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* XCTestManifests.swift */; };
+		OBJ_90 /* CRDT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "CRDT::CRDT::Product" /* CRDT.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4BF7DCA5244C3A9C004032EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CRDT::CRDT";
+			remoteInfo = CRDT;
+		};
+		4BF7DCA6244C3A9D004032EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CRDT::CRDTTests";
+			remoteInfo = CRDTTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4BF7DCA8244C4545004032EE /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
+		4BF7DCAC244C476A004032EE /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
+		"CRDT::CRDT::Product" /* CRDT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CRDT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"CRDT::CRDTTests::Product" /* CRDTTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = CRDTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_11 /* CRDT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDT.swift; sourceTree = "<group>"; };
+		OBJ_12 /* CRDTSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDTSet.swift; sourceTree = "<group>"; };
+		OBJ_13 /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
+		OBJ_14 /* VersionVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionVector.swift; sourceTree = "<group>"; };
+		OBJ_16 /* GCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCounter.swift; sourceTree = "<group>"; };
+		OBJ_17 /* PNCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCounter.swift; sourceTree = "<group>"; };
+		OBJ_19 /* LWWRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWWRegister.swift; sourceTree = "<group>"; };
+		OBJ_20 /* MVRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVRegister.swift; sourceTree = "<group>"; };
+		OBJ_22 /* GSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSet.swift; sourceTree = "<group>"; };
+		OBJ_24 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		OBJ_29 /* CRDTSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDTSetTests.swift; sourceTree = "<group>"; };
+		OBJ_30 /* VersionVectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionVectorTests.swift; sourceTree = "<group>"; };
+		OBJ_32 /* GCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCounterTest.swift; sourceTree = "<group>"; };
+		OBJ_33 /* PNCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCounterTest.swift; sourceTree = "<group>"; };
+		OBJ_35 /* LWWRegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWWRegisterTests.swift; sourceTree = "<group>"; };
+		OBJ_36 /* MVRegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVRegisterTests.swift; sourceTree = "<group>"; };
+		OBJ_38 /* GSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSetTests.swift; sourceTree = "<group>"; };
+		OBJ_39 /* CRDTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDTTests.swift; sourceTree = "<group>"; };
+		OBJ_41 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
+		OBJ_42 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_46 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_90 /* CRDT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4BF7DCA7244C4533004032EE /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				4BF7DCA8244C4545004032EE /* Assert.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		OBJ_10 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* CRDT.swift */,
+				OBJ_12 /* CRDTSet.swift */,
+				OBJ_13 /* Timestamp.swift */,
+				OBJ_14 /* VersionVector.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		OBJ_15 /* Counters */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_16 /* GCounter.swift */,
+				OBJ_17 /* PNCounter.swift */,
+			);
+			path = Counters;
+			sourceTree = "<group>";
+		};
+		OBJ_18 /* Registers */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_19 /* LWWRegister.swift */,
+				OBJ_20 /* MVRegister.swift */,
+			);
+			path = Registers;
+			sourceTree = "<group>";
+		};
+		OBJ_21 /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_22 /* GSet.swift */,
+			);
+			path = Sets;
+			sourceTree = "<group>";
+		};
+		OBJ_23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_24 /* ArrayExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		OBJ_25 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_26 /* CRDTTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_26 /* CRDTTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_27 /* CRDT */,
+				OBJ_39 /* CRDTTests.swift */,
+				OBJ_40 /* Extensions */,
+				4BF7DCAC244C476A004032EE /* TestCase.swift */,
+				OBJ_42 /* XCTestManifests.swift */,
+			);
+			name = CRDTTests;
+			path = Tests/CRDTTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_27 /* CRDT */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_28 /* Base */,
+				OBJ_31 /* Counters */,
+				OBJ_34 /* Registers */,
+				OBJ_37 /* Sets */,
+			);
+			path = CRDT;
+			sourceTree = "<group>";
+		};
+		OBJ_28 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_29 /* CRDTSetTests.swift */,
+				OBJ_30 /* VersionVectorTests.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		OBJ_31 /* Counters */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_32 /* GCounterTest.swift */,
+				OBJ_33 /* PNCounterTest.swift */,
+			);
+			path = Counters;
+			sourceTree = "<group>";
+		};
+		OBJ_34 /* Registers */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_35 /* LWWRegisterTests.swift */,
+				OBJ_36 /* MVRegisterTests.swift */,
+			);
+			path = Registers;
+			sourceTree = "<group>";
+		};
+		OBJ_37 /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_38 /* GSetTests.swift */,
+			);
+			path = Sets;
+			sourceTree = "<group>";
+		};
+		OBJ_40 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_41 /* ArrayExtensionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		OBJ_43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"CRDT::CRDT::Product" /* CRDT.framework */,
+				"CRDT::CRDTTests::Product" /* CRDTTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_25 /* Tests */,
+				OBJ_43 /* Products */,
+				OBJ_46 /* README.md */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* CRDT */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* CRDT */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* CRDT */,
+				OBJ_23 /* Extensions */,
+				4BF7DCA7244C4533004032EE /* Misc */,
+			);
+			name = CRDT;
+			path = Sources/CRDT;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_9 /* CRDT */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_10 /* Base */,
+				OBJ_15 /* Counters */,
+				OBJ_18 /* Registers */,
+				OBJ_21 /* Sets */,
+			);
+			path = CRDT;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"CRDT::CRDT" /* CRDT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_48 /* Build configuration list for PBXNativeTarget "CRDT" */;
+			buildPhases = (
+				OBJ_51 /* Sources */,
+				OBJ_62 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CRDT;
+			productName = CRDT;
+			productReference = "CRDT::CRDT::Product" /* CRDT.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"CRDT::CRDTTests" /* CRDTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_75 /* Build configuration list for PBXNativeTarget "CRDTTests" */;
+			buildPhases = (
+				OBJ_78 /* Sources */,
+				OBJ_89 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_91 /* PBXTargetDependency */,
+			);
+			name = CRDTTests;
+			productName = CRDTTests;
+			productReference = "CRDT::CRDTTests::Product" /* CRDTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"CRDT::SwiftPMPackageDescription" /* CRDTPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_64 /* Build configuration list for PBXNativeTarget "CRDTPackageDescription" */;
+			buildPhases = (
+				OBJ_67 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CRDTPackageDescription;
+			productName = CRDTPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "CRDT" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"CRDT::CRDT" /* CRDT */,
+				"CRDT::SwiftPMPackageDescription" /* CRDTPackageDescription */,
+				"CRDT::CRDTPackageTests::ProductTarget" /* CRDTPackageTests */,
+				"CRDT::CRDTTests" /* CRDTTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				4BF7DCA9244C4545004032EE /* Assert.swift in Sources */,
+				OBJ_52 /* CRDT.swift in Sources */,
+				OBJ_53 /* CRDTSet.swift in Sources */,
+				OBJ_54 /* Timestamp.swift in Sources */,
+				OBJ_55 /* VersionVector.swift in Sources */,
+				OBJ_56 /* GCounter.swift in Sources */,
+				OBJ_57 /* PNCounter.swift in Sources */,
+				OBJ_58 /* LWWRegister.swift in Sources */,
+				OBJ_59 /* MVRegister.swift in Sources */,
+				OBJ_60 /* GSet.swift in Sources */,
+				OBJ_61 /* ArrayExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_68 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_79 /* CRDTSetTests.swift in Sources */,
+				OBJ_80 /* VersionVectorTests.swift in Sources */,
+				OBJ_81 /* GCounterTest.swift in Sources */,
+				OBJ_82 /* PNCounterTest.swift in Sources */,
+				OBJ_83 /* LWWRegisterTests.swift in Sources */,
+				OBJ_84 /* MVRegisterTests.swift in Sources */,
+				4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */,
+				OBJ_85 /* GSetTests.swift in Sources */,
+				OBJ_86 /* CRDTTests.swift in Sources */,
+				OBJ_87 /* ArrayExtensionTests.swift in Sources */,
+				OBJ_88 /* XCTestManifests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CRDT::CRDTTests" /* CRDTTests */;
+			targetProxy = 4BF7DCA6244C3A9D004032EE /* PBXContainerItemProxy */;
+		};
+		OBJ_91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CRDT::CRDT" /* CRDT */;
+			targetProxy = 4BF7DCA5244C3A9C004032EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CRDT.xcodeproj/CRDT_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CRDT;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = CRDT;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CRDT.xcodeproj/CRDT_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CRDT;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = CRDT;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CRDT.xcodeproj/CRDTTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = CRDTTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CRDT.xcodeproj/CRDTTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = CRDTTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "CRDT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_48 /* Build configuration list for PBXNativeTarget "CRDT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_49 /* Debug */,
+				OBJ_50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_64 /* Build configuration list for PBXNativeTarget "CRDTPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_65 /* Debug */,
+				OBJ_66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_70 /* Build configuration list for PBXAggregateTarget "CRDTPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_71 /* Debug */,
+				OBJ_72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_75 /* Build configuration list for PBXNativeTarget "CRDTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_76 /* Debug */,
+				OBJ_77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
 }
