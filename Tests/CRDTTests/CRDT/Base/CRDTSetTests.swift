@@ -120,23 +120,21 @@ final class CRDTSetTests: XCTestCase {
     // MARK: - Remove
 
     func testRemove_existedElement_element() {
-        #warning("need to replace with PNSet")
-//        var set: GSet<Int> = [1, 2]
-//
-//        let result = set.remove(1)
-//
-//        XCTAssertEqual(result, 1)
-//        XCTAssertEqual(set.value, Set([2]))
+        var set: TPSet<Int> = [1, 2]
+
+        let result = set.remove(1)
+
+        XCTAssertEqual(result, 1)
+        XCTAssertEqual(set.value, Set([2]))
     }
 
     func testRemove_nonExistedElement_nil() {
-        #warning("need to replace with PNSet")
-//        var set: GSet<Int> = [1, 2]
-//
-//        let result = set.remove(3)
-//
-//        XCTAssertNil(result)
-//        XCTAssertEqual(set.value, Set([1, 2]))
+        var set: TPSet<Int> = [1, 2]
+
+        let result = set.remove(3)
+
+        XCTAssertNil(result)
+        XCTAssertEqual(set.value, Set([1, 2]))
     }
 
     // MARK: - Update

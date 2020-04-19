@@ -6,13 +6,13 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct GSet<T: Hashable>: CRDTSet {
+public struct GSet<T: Hashable>: CRDTMutableSet {
     #warning("need to think")
     public typealias Element = T
 
     public internal(set) var replicaNumber: Int = 0
 
-    public var value: Set<T>
+    public internal(set) var value: Set<T>
 
     public init() {
         value = []
