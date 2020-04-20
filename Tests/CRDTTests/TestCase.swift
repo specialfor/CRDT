@@ -1,6 +1,6 @@
 //
 //  TestCase.swift
-//  CRDT
+//  CRDTTests
 //
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //

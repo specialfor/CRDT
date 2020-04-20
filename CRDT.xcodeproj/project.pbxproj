@@ -28,6 +28,8 @@
 		4BF7DCA9244C4545004032EE /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCA8244C4545004032EE /* Assert.swift */; };
 		4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAC244C476A004032EE /* TestCase.swift */; };
 		4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAF244C541C004032EE /* TPSet.swift */; };
+		4BFD3C00244D85F900A23ADC /* EWFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD3BFF244D85F900A23ADC /* EWFlag.swift */; };
+		4BFD3C04244D88AA00A23ADC /* EWFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD3C02244D88A800A23ADC /* EWFlagTests.swift */; };
 		OBJ_52 /* CRDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CRDT.swift */; };
 		OBJ_53 /* CRDTSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CRDTSet.swift */; };
 		OBJ_54 /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Timestamp.swift */; };
@@ -77,6 +79,8 @@
 		4BF7DCA8244C4545004032EE /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		4BF7DCAC244C476A004032EE /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		4BF7DCAF244C541C004032EE /* TPSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSet.swift; sourceTree = "<group>"; };
+		4BFD3BFF244D85F900A23ADC /* EWFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EWFlag.swift; sourceTree = "<group>"; };
+		4BFD3C02244D88A800A23ADC /* EWFlagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EWFlagTests.swift; sourceTree = "<group>"; };
 		"CRDT::CRDT::Product" /* CRDT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CRDT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"CRDT::CRDTTests::Product" /* CRDTTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = CRDTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* CRDT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDT.swift; sourceTree = "<group>"; };
@@ -128,6 +132,22 @@
 				4BF7DCA8244C4545004032EE /* Assert.swift */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		4BFD3BFE244D85ED00A23ADC /* Flags */ = {
+			isa = PBXGroup;
+			children = (
+				4BFD3BFF244D85F900A23ADC /* EWFlag.swift */,
+			);
+			path = Flags;
+			sourceTree = "<group>";
+		};
+		4BFD3C01244D889600A23ADC /* Flags */ = {
+			isa = PBXGroup;
+			children = (
+				4BFD3C02244D88A800A23ADC /* EWFlagTests.swift */,
+			);
+			path = Flags;
 			sourceTree = "<group>";
 		};
 		OBJ_10 /* Base */ = {
@@ -204,6 +224,7 @@
 			children = (
 				OBJ_28 /* Base */,
 				OBJ_31 /* Counters */,
+				4BFD3C01244D889600A23ADC /* Flags */,
 				OBJ_34 /* Registers */,
 				OBJ_37 /* Sets */,
 			);
@@ -299,6 +320,7 @@
 			children = (
 				OBJ_10 /* Base */,
 				OBJ_15 /* Counters */,
+				4BFD3BFE244D85ED00A23ADC /* Flags */,
 				OBJ_18 /* Registers */,
 				OBJ_21 /* Sets */,
 			);
@@ -390,6 +412,7 @@
 			buildActionMask = 0;
 			files = (
 				4BF7DCA9244C4545004032EE /* Assert.swift in Sources */,
+				4BFD3C00244D85F900A23ADC /* EWFlag.swift in Sources */,
 				OBJ_52 /* CRDT.swift in Sources */,
 				OBJ_53 /* CRDTSet.swift in Sources */,
 				OBJ_54 /* Timestamp.swift in Sources */,
@@ -419,6 +442,7 @@
 			buildActionMask = 0;
 			files = (
 				4B340243244C862D0014D693 /* ORSetTests.swift in Sources */,
+				4BFD3C04244D88AA00A23ADC /* EWFlagTests.swift in Sources */,
 				OBJ_79 /* CRDTSetTests.swift in Sources */,
 				OBJ_80 /* VersionVectorTests.swift in Sources */,
 				4B340240244C5D330014D693 /* TPSetTests.swift in Sources */,
