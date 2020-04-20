@@ -7,10 +7,10 @@
 //
 
 public protocol CRDT: Comparable {
-    associatedtype Value
+    associatedtype NestedValue
 
     var replicaNumber: Int { get }
-    var value: Value { get }
+    var value: NestedValue { get }
 
     mutating func merge(_ crdt: Self)
 

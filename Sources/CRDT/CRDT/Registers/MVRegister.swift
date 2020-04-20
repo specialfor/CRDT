@@ -83,7 +83,7 @@ extension MVRegister: Comparable {
     static func compare(_ lhs: MVRegister<T>,
                         _ rhs: MVRegister<T>,
                         comparator: (VersionVector, VersionVector) -> Bool,
-                        subsetter: (MVRegister<T>.Value, MVRegister<T>.Value) -> Bool) -> Bool {
+                        subsetter: (MVRegister<T>.NestedValue, MVRegister<T>.NestedValue) -> Bool) -> Bool {
         let lhsVectors = lhs.value.map { $0.vector }
         let rhsVectors = rhs.value.map { $0.vector }
 
@@ -135,7 +135,7 @@ extension MVRegister: ExpressibleByArrayLiteral {
 // MARK: - Array
 
 extension Collection where Element: Hashable {
-    func toMVRegisterSet(vector: VersionVector) -> MVRegister<Element>.Value {
+    func toMVRegisterSet(vector: VersionVector) -> MVRegister<Element>.NestedValue {
         return Set(map { .init(value: $0, vector: vector) })
     }
 }

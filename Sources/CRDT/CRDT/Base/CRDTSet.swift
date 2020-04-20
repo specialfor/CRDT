@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public protocol CRDTSet: CRDT, Collection, ExpressibleByArrayLiteral where Element: Hashable, Value == Set<Element>, Index == Set<Element>.Index, ArrayLiteralElement == Element {
+public protocol CRDTSet: CRDT, Collection, ExpressibleByArrayLiteral where Element: Hashable, NestedValue == Set<Element>, Index == Set<Element>.Index, ArrayLiteralElement == Element {
 
     mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element)
     mutating func remove(_ member: Element) -> Element?
@@ -35,11 +35,7 @@ extension CRDTSet {
     public func contains(_ member: Element) -> Bool {
         return value.contains(member)
     }
-}
 
-// MARK: - Common
-
-extension CRDTSet {
     public var isEmpty: Bool {
         return value.isEmpty
     }
