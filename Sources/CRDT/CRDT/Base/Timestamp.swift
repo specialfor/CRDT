@@ -9,12 +9,18 @@
 public typealias Timestamp = Int
 
 public extension Timestamp {
-    internal static var current: Timestamp = 0
+    internal static var current: Timestamp = .initial
+
+    static var initial: Timestamp = 0
 
     static var now: Timestamp {
-        current += 1
+        current = current.next
         return current
+    }
+
+    var next: Timestamp {
+        return self + 1
     }
 }
 
-extension Timestamp: Comparable {}
+extension Timestamp: Comparable, Codable {}

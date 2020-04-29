@@ -24,8 +24,8 @@ final class ORSetTests: TestCase {
 
         XCTAssertEqual(set.value, [1, 2])
         XCTAssertEqual(set.payload.value, [
-            .init(value: 1, timestamp: 1),
-            .init(value: 2, timestamp: 2),
+            .init(value: 1, timestamp: 0),
+            .init(value: 2, timestamp: 1),
         ])
     }
 
@@ -51,7 +51,7 @@ final class ORSetTests: TestCase {
 
         XCTAssertEqual(result.value, [2])
         XCTAssertEqual(result.payload.value, [
-            .init(value: 2, timestamp: 3)
+            .init(value: 2, timestamp: 2)
         ])
     }
 
@@ -96,7 +96,7 @@ final class ORSetTests: TestCase {
         XCTAssertLessThan(set2, set4)
         XCTAssertFalse(set3 < set4)
         XCTAssertLessThan(set4, set5)
-        XCTAssertFalse(set3 < set5)
+        XCTAssertLessThan(set3, set5)
 
         // <=
         XCTAssertLessThanOrEqual(set0, set1)
@@ -106,7 +106,7 @@ final class ORSetTests: TestCase {
         XCTAssertLessThanOrEqual(set2, set4)
         XCTAssertFalse(set3 <= set4)
         XCTAssertLessThanOrEqual(set4, set5)
-        XCTAssertFalse(set3 <= set5)
+        XCTAssertLessThanOrEqual(set3, set5)
 
         // >
         XCTAssertGreaterThan(set1, set0)
@@ -116,7 +116,7 @@ final class ORSetTests: TestCase {
         XCTAssertGreaterThan(set4, set2)
         XCTAssertFalse(set4 > set3)
         XCTAssertGreaterThan(set5, set4)
-        XCTAssertFalse(set5 > set3)
+        XCTAssertGreaterThan(set5, set3)
 
         // >=
         XCTAssertGreaterThanOrEqual(set1, set0)
@@ -126,7 +126,7 @@ final class ORSetTests: TestCase {
         XCTAssertGreaterThanOrEqual(set4, set2)
         XCTAssertFalse(set4 >= set3)
         XCTAssertGreaterThanOrEqual(set5, set4)
-        XCTAssertFalse(set5 >= set3)
+        XCTAssertGreaterThanOrEqual(set5, set3)
     }
 
     // MARK: - Equatable
@@ -149,10 +149,10 @@ final class ORSetTests: TestCase {
         XCTAssertEqual(set1, set1)
         XCTAssertEqual(set2, set2)
         XCTAssertEqual(set3, set3)
+        XCTAssertEqual(set1, [1])
+        XCTAssertEqual(set2, [1, 2])
+        XCTAssertEqual(set3, set5)
 
-        XCTAssertNotEqual(set1, [1])
-        XCTAssertNotEqual(set2, [1, 2])
-        XCTAssertNotEqual(set3, set5)
         XCTAssertNotEqual(set2, set3)
         XCTAssertNotEqual(set2, set4)
         XCTAssertNotEqual(set3, set4)
@@ -169,9 +169,9 @@ final class ORSetTests: TestCase {
 
         XCTAssertEqual(set1.value, [1, 2])
         XCTAssertEqual(set1.payload.value, [
+            .init(value: 1, timestamp: 0),
             .init(value: 1, timestamp: 1),
-            .init(value: 1, timestamp: 2),
-            .init(value: 2, timestamp: 3),
+            .init(value: 2, timestamp: 2),
         ])
         XCTAssertFalse(result1.inserted)
         XCTAssertEqual(result1.memberAfterInsert, 1)
@@ -189,7 +189,7 @@ final class ORSetTests: TestCase {
         let result2 = set.remove(2)
 
         XCTAssertEqual(set.value, [1])
-        XCTAssertEqual(set.payload.value, [.init(value: 1, timestamp: 1)])
+        XCTAssertEqual(set.payload.value, [.init(value: 1, timestamp: 0)])
         XCTAssertNil(result1)
         XCTAssertEqual(result2, 2)
     }
@@ -204,9 +204,9 @@ final class ORSetTests: TestCase {
 
         XCTAssertEqual(set.value, [1, 2])
         XCTAssertEqual(set.payload.value, [
+            .init(value: 1, timestamp: 0),
             .init(value: 1, timestamp: 1),
-            .init(value: 1, timestamp: 2),
-            .init(value: 2, timestamp: 3),
+            .init(value: 2, timestamp: 2),
         ])
         XCTAssertEqual(result1, 1)
         XCTAssertNil(result2)

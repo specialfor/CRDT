@@ -28,8 +28,16 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
     @discardableResult
     public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
         let isContained = contains(newMember)
-        _ = payload.insert(.init(value: newMember, timestamp: Timestamp.now))
+        let timestamp = nextTimestamp()
+        _ = payload.insert(.init(value: newMember, timestamp: timestamp))
         return (!isContained, newMember)
+    }
+
+    func nextTimestamp() -> Timestamp {
+        let timestamp = payload.addedValues
+            .max { $0.timestamp < $1.timestamp }?
+            .timestamp
+        return timestamp?.next ?? .initial
     }
 
     @discardableResult
