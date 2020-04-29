@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct TPSet<T: Hashable>: CRDTSet {
+public struct TPSet<T: Hashable>: CRDTSet where T: Codable {
     #warning("need to think")
     public typealias Element = T
 

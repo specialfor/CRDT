@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct LWWRegister<T: Equatable>: CRDT {
+public struct LWWRegister<T: Equatable>: CRDT where T: Codable {
     public internal(set) var replicaNumber: Int = 0
 
     public var value: T {

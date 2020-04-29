@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public protocol CRDT: Comparable {
+public protocol CRDT: Comparable, Codable {
     associatedtype NestedValue
 
     var replicaNumber: Int { get }

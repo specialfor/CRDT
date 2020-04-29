@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct MVRegister<T: Hashable>: CRDT {
+public struct MVRegister<T: Hashable>: CRDT where T: Codable {
     public internal(set) var replicaNumber: Int = 0
 
     public internal(set) var value: Set<Pair>
@@ -118,7 +118,7 @@ extension MVRegister: Equatable {
 // MARK: - Pair
 
 extension MVRegister {
-    public struct Pair: Hashable {
+    public struct Pair: Hashable, Codable {
         public internal(set) var value: T
         public internal(set) var vector: VersionVector
     }
@@ -134,7 +134,7 @@ extension MVRegister: ExpressibleByArrayLiteral {
 
 // MARK: - Array
 
-extension Collection where Element: Hashable {
+extension Collection where Element: Hashable, Element: Codable {
     func toMVRegisterSet(vector: VersionVector) -> MVRegister<Element>.NestedValue {
         return Set(map { .init(value: $0, vector: vector) })
     }

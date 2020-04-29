@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 20.04.2020.
 //
 
-public struct ORMap<Key: Hashable, Value>: CRDT {
+public struct ORMap<Key: Hashable, Value>: CRDT where Key: Codable, Value: Codable {
     public internal(set) var replicaNumber: Int = 0
 
     public var value: [Key: Value] {
@@ -37,7 +37,7 @@ public struct ORMap<Key: Hashable, Value>: CRDT {
 // MARK: - Pair
 
 extension ORMap {
-    struct Pair: Hashable {
+    struct Pair: Hashable, Codable {
         let key: Key
         let value: Value?
 

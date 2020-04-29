@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct ORSet<T: Hashable>: CRDTSet {
+public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
     #warning("need to think")
     public typealias Element = T
 
@@ -58,7 +58,7 @@ public struct ORSet<T: Hashable>: CRDTSet {
 // MARK: - Pair
 
 extension ORSet {
-    struct Pair: Hashable {
+    struct Pair: Hashable, Codable {
         let value: T
         let timestamp: Timestamp
     }

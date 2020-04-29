@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct VersionVector {
+public struct VersionVector: Codable {
     static let initial: VersionVector = [0]
 
     public private(set) var elements: [Int] = []
