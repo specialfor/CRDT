@@ -17,6 +17,10 @@ public struct MVRegister<T: Hashable>: CRDT where T: Codable {
         self.value = value
     }
 
+    public mutating func assign(_ value: T) {
+        assign([value])
+    }
+
     public mutating func assign(_ value: Set<T>) {
         let vector = incrementedVector()
         self.value = value.toMVRegisterSet(vector: vector)

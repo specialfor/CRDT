@@ -17,6 +17,8 @@ public struct EWFlag: CRDT {
     }
     var payload: AWSet<Bool> = [false]
 
+    public init() {}
+
     public init(_ value: Bool) {
         self.value = value
     }

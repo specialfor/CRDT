@@ -25,6 +25,32 @@ final class ORSetTests: TestCase {
         XCTAssertEqual(set.value, [1, 2])
     }
 
+    // MARK: - Assign
+
+    func testAssign_sameArgument_nothingChanges() {
+        var set: ORSet<Int> = [1, 2]
+
+        set.assign([1, 2])
+
+        XCTAssertEqual(set.value, [1, 2])
+    }
+
+    func testAssign_disjointArgument_replace() {
+        var set: ORSet<Int> = [1, 2]
+
+        set.assign([3, 4])
+
+        XCTAssertEqual(set.value, [3, 4])
+    }
+
+    func testAssign_semiDisjointArgument_keepIntersectionOtherReplace() {
+        var set: ORSet<Int> = [1, 2]
+
+        set.assign([2, 3])
+
+        XCTAssertEqual(set.value, [2, 3])
+    }
+
     // MARK: - Merge
 
     func testMerge_withEmpty_equalsInitial() {

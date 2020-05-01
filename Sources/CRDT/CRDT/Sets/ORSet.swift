@@ -27,6 +27,18 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
         sequence.forEach { insert($0) }
     }
 
+    public mutating func assign(_ newValue: Set<T>) {
+        guard newValue != value else {
+            return
+        }
+
+        let newValueDiff = newValue.subtracting(value)
+        let valueDiff = value.subtracting(newValue)
+
+        valueDiff.forEach { remove($0) }
+        newValueDiff.forEach { insert($0) }
+    }
+
     @discardableResult
     public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
         let isContained = contains(newMember)
