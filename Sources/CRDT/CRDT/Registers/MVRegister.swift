@@ -9,6 +9,14 @@
 public struct MVRegister<T: Hashable>: CRDT where T: Codable {
     public internal(set) var value: Set<Pair>
 
+    public init(value: T) {
+        self.value = [value].toMVRegisterSet(vector: .initial)
+    }
+
+    init(value: Set<Pair>) {
+        self.value = value
+    }
+
     public mutating func assign(_ value: Set<T>) {
         let vector = incrementedVector()
         self.value = value.toMVRegisterSet(vector: vector)

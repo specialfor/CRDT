@@ -17,6 +17,10 @@ public struct EWFlag: CRDT {
     }
     var payload: AWSet<Bool> = [false]
 
+    public init(_ value: Bool) {
+        self.value = value
+    }
+
     public mutating func merge(_ flag: Self) {
         payload.merge(flag.payload)
     }

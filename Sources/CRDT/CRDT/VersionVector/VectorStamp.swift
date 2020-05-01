@@ -6,7 +6,7 @@
 //
 
 public struct VectorStamp: Codable {
-    static let initial: VectorStamp = [:]
+    static let initial: VectorStamp = [Device.id: 0]
 
     public typealias Elements = [Device.ID: Int]
     public private(set) var elements = Elements()

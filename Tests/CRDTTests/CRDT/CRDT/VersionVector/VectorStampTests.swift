@@ -9,7 +9,15 @@ import XCTest
 
 @testable import CRDT
 
-final class VectorStampTests: XCTestCase {
+final class VectorStampTests: TestCase {
+    let deviceID = "123"
+
+    override func set(stubbr: Stubbr) {
+        stubbr.stub(
+            getter: { Device.Dependency.generateDeviceID },
+            setter: { Device.Dependency.generateDeviceID = $0 },
+            stubbed: { return self.deviceID })
+    }
 
     // MARK: - Init
 
@@ -45,7 +53,7 @@ final class VectorStampTests: XCTestCase {
 
     func testInitial_equalsEmpty() {
         let vector = VectorStamp.initial
-        XCTAssertEqual(vector.elements, [:])
+        XCTAssertEqual(vector.elements, [deviceID: 0])
     }
 
     // MARK: - Merge

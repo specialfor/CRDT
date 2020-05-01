@@ -19,8 +19,12 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
     }
 
     public init(arrayLiteral elements: T...) {
+        self.init(elements)
+    }
+
+    public init<U: Sequence>(_ sequence: U) where U.Element == T {
         payload = []
-        elements.forEach { insert($0) }
+        sequence.forEach { insert($0) }
     }
 
     @discardableResult
