@@ -10,8 +10,6 @@ public struct GSet<T: Hashable>: CRDTSet where T: Codable {
     #warning("need to think")
     public typealias Element = T
 
-    public internal(set) var replicaNumber: Int = 0
-
     public internal(set) var value: Set<T>
 
     public init() {

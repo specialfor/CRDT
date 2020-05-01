@@ -9,15 +9,13 @@
 public protocol CRDT: Comparable, Codable {
     associatedtype NestedValue
 
-    var replicaNumber: Int { get }
     var value: NestedValue { get }
 
     mutating func merge(_ crdt: Self)
-
     func hasConflict(with crdt: Self) -> Bool
 }
 
-extension CRDT {
+public extension CRDT {
     func merging(_ crdt: Self) -> Self {
         var temp = self
         temp.merge(crdt)

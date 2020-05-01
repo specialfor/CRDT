@@ -9,8 +9,6 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
     #warning("need to think")
     public typealias Element = T
 
-    public internal(set) var replicaNumber: Int = 0
-
     public var value: Set<T> {
         return Set(payload.map { $0.value })
     }
@@ -28,16 +26,8 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
     @discardableResult
     public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
         let isContained = contains(newMember)
-        let timestamp = nextTimestamp()
-        _ = payload.insert(.init(value: newMember, timestamp: timestamp))
+        _ = payload.insert(.init(value: newMember, tag: .unique))
         return (!isContained, newMember)
-    }
-
-    func nextTimestamp() -> Timestamp {
-        let timestamp = payload.addedValues
-            .max { $0.timestamp < $1.timestamp }?
-            .timestamp
-        return timestamp?.next ?? .initial
     }
 
     @discardableResult
@@ -68,7 +58,7 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
 extension ORSet {
     struct Pair: Hashable, Codable {
         let value: T
-        let timestamp: Timestamp
+        let tag: UniqueTag
     }
 }
 

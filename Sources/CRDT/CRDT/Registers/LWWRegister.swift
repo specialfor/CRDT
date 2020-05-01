@@ -7,8 +7,6 @@
 //
 
 public struct LWWRegister<T: Equatable>: CRDT where T: Codable {
-    public internal(set) var replicaNumber: Int = 0
-
     public var value: T {
         get { return _value }
         set {

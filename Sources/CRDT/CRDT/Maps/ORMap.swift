@@ -6,8 +6,6 @@
 //
 
 public struct ORMap<Key: Hashable, Value>: CRDT where Key: Codable, Value: Codable {
-    public internal(set) var replicaNumber: Int = 0
-
     public var value: [Key: Value] {
         return payload.value.reduce(into: [:]) { $0[$1.key] = $1.value }
     }

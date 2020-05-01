@@ -9,8 +9,6 @@ public struct TPSet<T: Hashable>: CRDTSet where T: Codable {
     #warning("need to think")
     public typealias Element = T
 
-    public internal(set) var replicaNumber: Int = 0
-
     public var value: Set<T> {
         return addedValues.subtracting(removedValues)
     }

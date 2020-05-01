@@ -6,8 +6,6 @@
 //
 
 public struct EWFlag: CRDT {
-    public internal(set) var replicaNumber: Int = 0
-
     public var value: Bool {
         get {
             return payload.value.contains(true)
