@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct LWWRegister<T: Equatable>: CRDT where T: Codable {
+public struct LWWRegister<T: Hashable>: CRDT where T: Codable {
     public var value: T {
         get { return _value }
         set {
