@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		4B2AF803245C31D600C36BBA /* VectorStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF802245C31D600C36BBA /* VectorStamp.swift */; };
 		4B2AF806245C37FF00C36BBA /* VectorStampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF805245C37FF00C36BBA /* VectorStampTests.swift */; };
+		4B2AF80A245C431B00C36BBA /* Stubbr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF809245C431B00C36BBA /* Stubbr.swift */; };
 		4B340240244C5D330014D693 /* TPSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96558C244C5CD700DF8E9C /* TPSetTests.swift */; };
 		4B340243244C862D0014D693 /* ORSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340241244C86230014D693 /* ORSetTests.swift */; };
 		4B340245244C86400014D693 /* ORSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340244244C86400014D693 /* ORSet.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		4B2AF802245C31D600C36BBA /* VectorStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStamp.swift; sourceTree = "<group>"; };
 		4B2AF805245C37FF00C36BBA /* VectorStampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStampTests.swift; sourceTree = "<group>"; };
+		4B2AF809245C431B00C36BBA /* Stubbr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubbr.swift; sourceTree = "<group>"; };
 		4B340241244C86230014D693 /* ORSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSetTests.swift; sourceTree = "<group>"; };
 		4B340244244C86400014D693 /* ORSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSet.swift; sourceTree = "<group>"; };
 		4B340246244C92790014D693 /* AWSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSet.swift; sourceTree = "<group>"; };
@@ -156,6 +158,24 @@
 				4B2AF805245C37FF00C36BBA /* VectorStampTests.swift */,
 			);
 			path = VersionVector;
+			sourceTree = "<group>";
+		};
+		4B2AF807245C42DB00C36BBA /* CRDT */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_27 /* CRDT */,
+				OBJ_40 /* Extensions */,
+			);
+			path = CRDT;
+			sourceTree = "<group>";
+		};
+		4B2AF808245C430200C36BBA /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				4BF7DCAC244C476A004032EE /* TestCase.swift */,
+				4B2AF809245C431B00C36BBA /* Stubbr.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		4BF7DCA7244C4533004032EE /* Misc */ = {
@@ -259,10 +279,9 @@
 		OBJ_26 /* CRDTTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_27 /* CRDT */,
+				4B2AF807245C42DB00C36BBA /* CRDT */,
 				OBJ_39 /* CRDTTests.swift */,
-				OBJ_40 /* Extensions */,
-				4BF7DCAC244C476A004032EE /* TestCase.swift */,
+				4B2AF808245C430200C36BBA /* Misc */,
 				OBJ_42 /* XCTestManifests.swift */,
 			);
 			name = CRDTTests;
@@ -508,6 +527,7 @@
 				OBJ_82 /* PNCounterTest.swift in Sources */,
 				OBJ_83 /* LWWRegisterTests.swift in Sources */,
 				OBJ_84 /* MVRegisterTests.swift in Sources */,
+				4B2AF80A245C431B00C36BBA /* Stubbr.swift in Sources */,
 				4BFD3C0A244D95A000A23ADC /* ORMapTests.swift in Sources */,
 				4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */,
 				OBJ_85 /* GSetTests.swift in Sources */,

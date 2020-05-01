@@ -18,7 +18,7 @@ public struct VectorStamp: Codable {
     public mutating func merge(_ vector: VectorStamp) {
         vector.elements.forEach { key, value in
             if let currentValue = elements[key] {
-                elements[key] = max(currentValue, value)
+                elements[key] = Swift.max(currentValue, value)
             } else {
                 elements[key] = value
             }
@@ -91,5 +91,36 @@ extension VectorStamp: Comparable {
 extension VectorStamp: Hashable {
     public static func == (lhs: VectorStamp, rhs: VectorStamp) -> Bool {
         return lhs.elements == rhs.elements
+    }
+}
+
+// MARK: - Collection
+
+extension VectorStamp: Collection {
+    public var startIndex: Elements.Index {
+        return elements.startIndex
+    }
+
+    public var endIndex: Elements.Index {
+        return elements.endIndex
+    }
+
+    public subscript(index: Elements.Index) -> (key: Device.ID, value: Int) {
+        get {
+            return elements[index]
+        }
+    }
+
+    public subscript(key: Device.ID) -> Int? {
+        get {
+            return elements[key]
+        }
+        set {
+            elements[key] = newValue
+        }
+    }
+
+    public func index(after i: Elements.Index) -> Elements.Index {
+        return elements.index(after: i)
     }
 }

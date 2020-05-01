@@ -7,8 +7,6 @@
 //
 
 public struct MVRegister<T: Hashable>: CRDT where T: Codable {
-    public internal(set) var replicaNumber: Int = 0
-
     public internal(set) var value: Set<Pair>
 
     public mutating func assign(_ value: Set<T>) {
@@ -16,33 +14,27 @@ public struct MVRegister<T: Hashable>: CRDT where T: Codable {
         self.value = value.toMVRegisterSet(vector: vector)
     }
 
-    func incrementedVector() -> VersionVector {
-        var newVector: VersionVector = value
+    func incrementedVector() -> VectorStamp {
+        var newVector: VectorStamp = value
             .map { $0.vector }
-            .reduce(into: []) { result, vector in
-                guard !result.isEmpty else {
-                    result = vector
-                    return
-                }
-
-                vector.enumerated().forEach { index, element in
-                    result[index] = max(element, result[index])
-                }
+            .reduce(into: [:]) { result, vector in
+                result.merge(vector)
         }
 
-        newVector[replicaNumber] += 1
+        let value = newVector[Device.id] ?? 0
+        newVector[Device.id] = value + 1
 
         return newVector
     }
 
     public mutating func merge(_ register: MVRegister<T>) {
-        let lhsDominated = donimatedSubset(using: register)
-        let rhsDominated = register.donimatedSubset(using: self)
+        let lhsDominated = dominatedSubset(using: register)
+        let rhsDominated = register.dominatedSubset(using: self)
 
         value = lhsDominated.union(rhsDominated)
     }
 
-    func donimatedSubset(using register: MVRegister<T>) -> Set<Pair> {
+    func dominatedSubset(using register: MVRegister<T>) -> Set<Pair> {
         var set: Set<Pair> = []
 
         for i in value {
@@ -82,7 +74,7 @@ extension MVRegister: Comparable {
 
     static func compare(_ lhs: MVRegister<T>,
                         _ rhs: MVRegister<T>,
-                        comparator: (VersionVector, VersionVector) -> Bool,
+                        comparator: (VectorStamp, VectorStamp) -> Bool,
                         subsetter: (MVRegister<T>.NestedValue, MVRegister<T>.NestedValue) -> Bool) -> Bool {
         let lhsVectors = lhs.value.map { $0.vector }
         let rhsVectors = rhs.value.map { $0.vector }
@@ -120,7 +112,7 @@ extension MVRegister: Equatable {
 extension MVRegister {
     public struct Pair: Hashable, Codable {
         public internal(set) var value: T
-        public internal(set) var vector: VersionVector
+        public internal(set) var vector: VectorStamp
     }
 }
 
@@ -135,7 +127,7 @@ extension MVRegister: ExpressibleByArrayLiteral {
 // MARK: - Array
 
 extension Collection where Element: Hashable, Element: Codable {
-    func toMVRegisterSet(vector: VersionVector) -> MVRegister<Element>.NestedValue {
+    func toMVRegisterSet(vector: VectorStamp) -> MVRegister<Element>.NestedValue {
         return Set(map { .init(value: $0, vector: vector) })
     }
 }
