@@ -9,7 +9,7 @@
 public struct GCounter: CRDT {
     var vector = VersionVector()
 
-    #warning("Need to think...")
+    #warning("Can be removed after migration to VectorStamp")
     public internal(set) var replicaNumber: Int = 0
 
     public var value: Int {

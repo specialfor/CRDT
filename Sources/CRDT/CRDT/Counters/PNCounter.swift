@@ -10,7 +10,7 @@ public struct PNCounter: CRDT {
     var incrementCounter: GCounter = GCounter()
     var decrementCounter: GCounter = GCounter()
 
-    #warning("Need to think...")
+    #warning("Can be removed after migration to VectorStamp")
     public internal(set) var replicaNumber: Int = 0 {
         didSet {
             incrementCounter.replicaNumber = replicaNumber

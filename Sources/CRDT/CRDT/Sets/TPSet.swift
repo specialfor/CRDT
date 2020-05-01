@@ -6,7 +6,7 @@
 //
 
 public struct TPSet<T: Hashable>: CRDTSet where T: Codable {
-    #warning("need to think")
+    #warning("Is it possible to omit line below?")
     public typealias Element = T
 
     public var value: Set<T> {

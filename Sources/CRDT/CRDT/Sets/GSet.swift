@@ -7,7 +7,7 @@
 //
 
 public struct GSet<T: Hashable>: CRDTSet where T: Codable {
-    #warning("need to think")
+    #warning("Is it possible to omit line below?")
     public typealias Element = T
 
     public internal(set) var value: Set<T>

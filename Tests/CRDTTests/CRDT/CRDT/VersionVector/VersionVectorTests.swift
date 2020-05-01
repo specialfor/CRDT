@@ -12,7 +12,7 @@ import XCTest
 
 final class VersionVectorTests: XCTestCase {
 
-    #warning("need to think")
+    #warning("Should be implementes as assertion")
 //    func testIncrement_replicaNumberGreaterThanUnderlyingVectorLength_fail() {
 //        var counter: GCounter = []
 //        counter.replicaNumber = 1

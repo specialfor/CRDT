@@ -36,7 +36,7 @@ extension EWFlag: ExpressibleByBooleanLiteral {
 
 // MARK: - Comparable
 
-#warning("need to rethink Comparable and Equatable implementaions")
+#warning("Need to rethink Comparable and Equatable implementaions")
 extension EWFlag: Comparable {
     public static func < (lhs: EWFlag, rhs: EWFlag) -> Bool {
         return lhs.payload < rhs.payload
