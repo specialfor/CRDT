@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4B2AF803245C31D600C36BBA /* VectorStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF802245C31D600C36BBA /* VectorStamp.swift */; };
+		4B2AF806245C37FF00C36BBA /* VectorStampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AF805245C37FF00C36BBA /* VectorStampTests.swift */; };
 		4B340240244C5D330014D693 /* TPSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B96558C244C5CD700DF8E9C /* TPSetTests.swift */; };
 		4B340243244C862D0014D693 /* ORSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340241244C86230014D693 /* ORSetTests.swift */; };
 		4B340245244C86400014D693 /* ORSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340244244C86400014D693 /* ORSet.swift */; };
@@ -77,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B2AF802245C31D600C36BBA /* VectorStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStamp.swift; sourceTree = "<group>"; };
+		4B2AF805245C37FF00C36BBA /* VectorStampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorStampTests.swift; sourceTree = "<group>"; };
 		4B340241244C86230014D693 /* ORSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSetTests.swift; sourceTree = "<group>"; };
 		4B340244244C86400014D693 /* ORSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSet.swift; sourceTree = "<group>"; };
 		4B340246244C92790014D693 /* AWSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSet.swift; sourceTree = "<group>"; };
@@ -136,6 +140,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B2AF801245C31C300C36BBA /* VersionVector */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* VersionVector.swift */,
+				4B2AF802245C31D600C36BBA /* VectorStamp.swift */,
+			);
+			path = VersionVector;
+			sourceTree = "<group>";
+		};
+		4B2AF804245C37E400C36BBA /* VersionVector */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_30 /* VersionVectorTests.swift */,
+				4B2AF805245C37FF00C36BBA /* VectorStampTests.swift */,
+			);
+			path = VersionVector;
+			sourceTree = "<group>";
+		};
 		4BF7DCA7244C4533004032EE /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +205,6 @@
 				OBJ_11 /* CRDT.swift */,
 				OBJ_12 /* CRDTSet.swift */,
 				OBJ_13 /* Timestamp.swift */,
-				OBJ_14 /* VersionVector.swift */,
 				4B8E29C9245C16B400F18B34 /* UniqueTag.swift */,
 				4B8E29CD245C1CD400F18B34 /* Device.swift */,
 			);
@@ -257,6 +278,7 @@
 				4BFD3C08244D959200A23ADC /* Maps */,
 				OBJ_34 /* Registers */,
 				OBJ_37 /* Sets */,
+				4B2AF804245C37E400C36BBA /* VersionVector */,
 			);
 			path = CRDT;
 			sourceTree = "<group>";
@@ -265,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_29 /* CRDTSetTests.swift */,
-				OBJ_30 /* VersionVectorTests.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -354,6 +375,7 @@
 				4BFD3C05244D8D8400A23ADC /* Maps */,
 				OBJ_18 /* Registers */,
 				OBJ_21 /* Sets */,
+				4B2AF801245C31C300C36BBA /* VersionVector */,
 			);
 			path = CRDT;
 			sourceTree = "<group>";
@@ -458,6 +480,7 @@
 				4B8E29CE245C1CD400F18B34 /* Device.swift in Sources */,
 				OBJ_58 /* LWWRegister.swift in Sources */,
 				4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */,
+				4B2AF803245C31D600C36BBA /* VectorStamp.swift in Sources */,
 				OBJ_59 /* MVRegister.swift in Sources */,
 				OBJ_60 /* GSet.swift in Sources */,
 				OBJ_61 /* ArrayExtension.swift in Sources */,
@@ -488,6 +511,7 @@
 				4BFD3C0A244D95A000A23ADC /* ORMapTests.swift in Sources */,
 				4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */,
 				OBJ_85 /* GSetTests.swift in Sources */,
+				4B2AF806245C37FF00C36BBA /* VectorStampTests.swift in Sources */,
 				OBJ_86 /* CRDTTests.swift in Sources */,
 				OBJ_87 /* ArrayExtensionTests.swift in Sources */,
 				OBJ_88 /* XCTestManifests.swift in Sources */,

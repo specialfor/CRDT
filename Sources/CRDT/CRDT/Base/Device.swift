@@ -9,9 +9,10 @@
 import UIKit
 #endif
 
-enum Device {
-    typealias ID = String
-    static var id: ID {
+public enum Device {
+    public typealias ID = String
+
+    public static var id: ID {
         #if os(iOS)
         return UIDevice.current.identifierForVendor!.uuidString
         #else
