@@ -26,11 +26,6 @@ public struct GSet<T: Hashable>: CRDTSet where T: Codable {
     }
 
     @discardableResult
-    public mutating func update(with newMember: T) -> T? {
-        return value.update(with: newMember)
-    }
-
-    @discardableResult
     public mutating func remove(_ member: T) -> T? {
         assertionFailure("Remove shouldn't be called on `GSet`")
         return nil

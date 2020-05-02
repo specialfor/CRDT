@@ -209,7 +209,7 @@ final class ORSetTests: TestCase {
 
     // MARK: - Update
 
-    func testUpdate() {
+    func testUpdate_withPrimitites() {
         var set: ORSet<Int> = [1]
 
         let result1 = set.update(with: 1)
@@ -218,5 +218,21 @@ final class ORSetTests: TestCase {
         XCTAssertEqual(set.value, [1, 2])
         XCTAssertEqual(result1, 1)
         XCTAssertNil(result2)
+    }
+
+    func testUpdate_withGeneratedHashable_insert() {
+        var set: ORSet<GHStruct> = [Fake.ghStruct, Fake.ghStructWithDifferentId]
+
+        _ = set.update(with: Fake.ghStructWithSameId)
+
+        XCTAssertEqual(set.value, [Fake.ghStruct, Fake.ghStructWithSameId, Fake.ghStructWithDifferentId])
+    }
+
+    func testUpdate_withOwnHashable_replace() {
+        var set: ORSet<OHStruct> = [Fake.ohStruct, Fake.ohStructWithDifferentId]
+
+        _ = set.update(with: Fake.ohStructWithSameId)
+
+        XCTAssertEqual(set.value, [Fake.ohStructWithSameId, Fake.ohStructWithDifferentId])
     }
 }

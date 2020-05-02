@@ -42,26 +42,6 @@ final class GSetTests: TestCase {
         XCTAssertEqual(result.memberAfterInsert, 2)
     }
 
-    // MAKR: - Update
-
-    func testUpdate_existedElement_element() {
-        var set: GSet = [1, 2]
-
-        let result = set.update(with: 2)
-
-        XCTAssertEqual(result, 2)
-        XCTAssertEqual(set.value, Set([1, 2]))
-    }
-
-    func testUpdate_notExistedElement_nil() {
-        var set: GSet = [1, 2]
-
-        let result = set.update(with: 3)
-
-        XCTAssertNil(result)
-        XCTAssertEqual(set.value, Set([1, 2, 3]))
-    }
-
     // MARK: - Remove
 
     func testRemove_assertAndReturnNil() {

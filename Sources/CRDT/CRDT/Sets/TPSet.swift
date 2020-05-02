@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct TPSet<T: Hashable>: CRDTSet where T: Codable {
+public struct TPSet<T: Hashable>: CRDTRemovableSet where T: Codable {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
@@ -28,12 +28,6 @@ public struct TPSet<T: Hashable>: CRDTSet where T: Codable {
     @discardableResult
     public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
         return addedValues.insert(newMember)
-    }
-
-    @discardableResult
-    public mutating func update(with newMember: __owned T) -> T? {
-        let result = insert(newMember)
-        return result.inserted ? newMember : nil
     }
 
     @discardableResult

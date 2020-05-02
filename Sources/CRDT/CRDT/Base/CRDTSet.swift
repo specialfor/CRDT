@@ -8,9 +8,24 @@
 
 public protocol CRDTSet: CRDT, Collection, ExpressibleByArrayLiteral where Element: Hashable, NestedValue == Set<Element>, Index == Set<Element>.Index, ArrayLiteralElement == Element {
 
+    @discardableResult
     mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element)
+}
+
+public protocol CRDTRemovableSet: CRDTSet {
     mutating func remove(_ member: Element) -> Element?
+}
+
+public protocol CRDTUpdatableSet: CRDTSet {
     mutating func update(with newMember: Element) -> Element?
+}
+
+extension CRDTUpdatableSet where Self: CRDTRemovableSet {
+    public mutating func update(with newMember: Element) -> Element? {
+        let oldValue = remove(newMember)
+        insert(newMember)
+        return oldValue == nil ? nil : newMember
+    }
 }
 
 // MARK: - Collection

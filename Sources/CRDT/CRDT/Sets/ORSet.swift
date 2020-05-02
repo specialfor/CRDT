@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
+public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Codable {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
@@ -53,11 +53,6 @@ public struct ORSet<T: Hashable>: CRDTSet where T: Codable {
 
         let isRemoved = !pairs.isEmpty
         return isRemoved ? member : nil
-    }
-
-    @discardableResult
-    public mutating func update(with newMember: T) -> T? {
-        return insert(newMember).inserted ? nil : newMember
     }
 
     public mutating func merge(_ set: ORSet<T>) {

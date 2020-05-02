@@ -6,19 +6,22 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public protocol CRDT: Comparable, Hashable, Codable {
+public protocol Mergable {
+    mutating func merge(_ object: Self)
+}
+
+public extension Mergable {
+    func merging(_ object: Self) -> Self {
+        var temp = self
+        temp.merge(object)
+        return temp
+    }
+}
+
+public protocol CRDT: Mergable, Comparable, Hashable, Codable {
     associatedtype NestedValue
 
     var value: NestedValue { get }
 
-    mutating func merge(_ crdt: Self)
     func hasConflict(with crdt: Self) -> Bool
-}
-
-public extension CRDT {
-    func merging(_ crdt: Self) -> Self {
-        var temp = self
-        temp.merge(crdt)
-        return temp
-    }
 }

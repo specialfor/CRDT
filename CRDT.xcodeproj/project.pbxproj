@@ -30,6 +30,7 @@
 		4B340247244C92790014D693 /* AWSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B340246244C92790014D693 /* AWSet.swift */; };
 		4B8E29CA245C16B400F18B34 /* UniqueTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E29C9245C16B400F18B34 /* UniqueTag.swift */; };
 		4B8E29CE245C1CD400F18B34 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E29CD245C1CD400F18B34 /* Device.swift */; };
+		4BC6B0B1245DD45C00C2585B /* Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6B0AF245DD45800C2585B /* Fake.swift */; };
 		4BF7DCA9244C4545004032EE /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCA8244C4545004032EE /* Assert.swift */; };
 		4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAC244C476A004032EE /* TestCase.swift */; };
 		4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAF244C541C004032EE /* TPSet.swift */; };
@@ -89,6 +90,7 @@
 		4B8E29C9245C16B400F18B34 /* UniqueTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTag.swift; sourceTree = "<group>"; };
 		4B8E29CD245C1CD400F18B34 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4B96558C244C5CD700DF8E9C /* TPSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSetTests.swift; sourceTree = "<group>"; };
+		4BC6B0AF245DD45800C2585B /* Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fake.swift; sourceTree = "<group>"; };
 		4BF7DCA8244C4545004032EE /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		4BF7DCAC244C476A004032EE /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		4BF7DCAF244C541C004032EE /* TPSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSet.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				4BF7DCAC244C476A004032EE /* TestCase.swift */,
 				4B2AF809245C431B00C36BBA /* Stubbr.swift */,
+				4BC6B0AF245DD45800C2585B /* Fake.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				OBJ_80 /* VersionVectorTests.swift in Sources */,
 				4B340240244C5D330014D693 /* TPSetTests.swift in Sources */,
 				OBJ_81 /* GCounterTest.swift in Sources */,
+				4BC6B0B1245DD45C00C2585B /* Fake.swift in Sources */,
 				OBJ_82 /* PNCounterTest.swift in Sources */,
 				OBJ_83 /* LWWRegisterTests.swift in Sources */,
 				OBJ_84 /* MVRegisterTests.swift in Sources */,
