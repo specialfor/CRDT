@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 20.04.2020.
 //
 
-public struct ORMap<Key: Hashable, Value>: CRDT where Key: Codable, Value: Codable {
+public struct ORMap<Key: Hashable, Value: Mergable>: CRDT where Key: Codable, Value: Codable {
     public var value: [Key: Value] {
         return payload.value.reduce(into: [:]) { $0[$1.key] = $1.value }
     }
@@ -35,9 +35,14 @@ public struct ORMap<Key: Hashable, Value>: CRDT where Key: Codable, Value: Codab
 // MARK: - Pair
 
 extension ORMap {
-    struct Pair: Hashable, Codable {
+    struct Pair: Hashable, Codable, Mergable {
         let key: Key
-        let value: Value?
+        var value: Value?
+
+        mutating func merge(_ object: ORMap<Key, Value>.Pair) {
+            guard let value = object.value else { return }
+            self.value?.merge(value)
+        }
 
         func hash(into hasher: inout Hasher) {
             hasher.combine(key.hashValue)

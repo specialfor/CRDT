@@ -31,6 +31,7 @@
 		4B8E29CA245C16B400F18B34 /* UniqueTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E29C9245C16B400F18B34 /* UniqueTag.swift */; };
 		4B8E29CE245C1CD400F18B34 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E29CD245C1CD400F18B34 /* Device.swift */; };
 		4BC6B0B1245DD45C00C2585B /* Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6B0AF245DD45800C2585B /* Fake.swift */; };
+		4BC6B0B3245EE83900C2585B /* Mergable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6B0B2245EE83900C2585B /* Mergable.swift */; };
 		4BF7DCA9244C4545004032EE /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCA8244C4545004032EE /* Assert.swift */; };
 		4BF7DCAE244C47E9004032EE /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAC244C476A004032EE /* TestCase.swift */; };
 		4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7DCAF244C541C004032EE /* TPSet.swift */; };
@@ -91,6 +92,7 @@
 		4B8E29CD245C1CD400F18B34 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4B96558C244C5CD700DF8E9C /* TPSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSetTests.swift; sourceTree = "<group>"; };
 		4BC6B0AF245DD45800C2585B /* Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fake.swift; sourceTree = "<group>"; };
+		4BC6B0B2245EE83900C2585B /* Mergable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mergable.swift; sourceTree = "<group>"; };
 		4BF7DCA8244C4545004032EE /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		4BF7DCAC244C476A004032EE /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		4BF7DCAF244C541C004032EE /* TPSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSet.swift; sourceTree = "<group>"; };
@@ -227,9 +229,10 @@
 			children = (
 				OBJ_11 /* CRDT.swift */,
 				OBJ_12 /* CRDTSet.swift */,
+				4B8E29CD245C1CD400F18B34 /* Device.swift */,
+				4BC6B0B2245EE83900C2585B /* Mergable.swift */,
 				OBJ_13 /* Timestamp.swift */,
 				4B8E29C9245C16B400F18B34 /* UniqueTag.swift */,
-				4B8E29CD245C1CD400F18B34 /* Device.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				4B340247244C92790014D693 /* AWSet.swift in Sources */,
 				4B8E29CE245C1CD400F18B34 /* Device.swift in Sources */,
 				OBJ_58 /* LWWRegister.swift in Sources */,
+				4BC6B0B3245EE83900C2585B /* Mergable.swift in Sources */,
 				4BF7DCB0244C541C004032EE /* TPSet.swift in Sources */,
 				4B2AF803245C31D600C36BBA /* VectorStamp.swift in Sources */,
 				OBJ_59 /* MVRegister.swift in Sources */,

@@ -74,6 +74,58 @@ final class ORSetTests: TestCase {
         XCTAssertEqual(result.value, [2])
     }
 
+    func testMerge_concurrentAddRemove_onGeneratedHashableStruct() {
+        let struct1: MGHStruct = .init(id: 1, payload: [1, 2])
+        let struct2: MGHStruct = .init(id: 2, payload: [3, 4])
+
+        var set: ORSet<MGHStruct> = [struct1, struct2]
+
+        var set2 = set
+
+        set.insert(struct2)
+        set2.remove(struct1)
+        set2.remove(struct2)
+
+        let result = set.merging(set2)
+
+        XCTAssertEqual(result.value, [struct2])
+    }
+
+    func testMerge_concurrentAddRemove_onOwndHashableStruct() {
+        var set: ORSet<MOHStruct> = [
+            .init(id: 1, payload: [1, 2]),
+            .init(id: 2, payload: [3, 4])
+        ]
+
+        var set2 = set
+
+        set.insert(.init(id: 2, payload: [3, 4]))
+        set2.remove(.init(id: 1, payload: [1, 2]))
+        set2.remove(.init(id: 2, payload: [3, 4]))
+
+        let result = set.merging(set2)
+
+        XCTAssertEqual(result.value, [.init(id: 2, payload: [3, 4])])
+    }
+
+    func testMerger_concurrentUpdates_onOwnHashableStruct() {
+        var set: ORSet<MOHStruct> = [
+            .init(id: 1, payload: [1, 2]),
+            .init(id: 2, payload: [3, 4]),
+        ]
+        var set2 = set
+
+        set.update(with: .init(id: 1, payload: [1, 3, 4]))
+        set2.update(with: .init(id: 1, payload: [5]))
+
+        let result = set.merging(set2)
+
+        XCTAssertEqual(result.value, [
+            .init(id: 1, payload: [1, 3, 4, 5]),
+            .init(id: 2, payload: [3, 4])
+        ])
+    }
+
     // MARK: - HasConflict
 
     func testHasConflict() {
@@ -220,19 +272,41 @@ final class ORSetTests: TestCase {
         XCTAssertNil(result2)
     }
 
-    func testUpdate_withGeneratedHashable_insert() {
-        var set: ORSet<GHStruct> = [Fake.ghStruct, Fake.ghStructWithDifferentId]
+    func testUpdate_withGeneratedHashableStruct() {
+        let struct1 = MGHStruct(id: 1, payload: [1, 2])
+        var set: ORSet<MGHStruct> = [struct1]
 
-        _ = set.update(with: Fake.ghStructWithSameId)
+        let result1 = set.update(with: struct1)
 
-        XCTAssertEqual(set.value, [Fake.ghStruct, Fake.ghStructWithSameId, Fake.ghStructWithDifferentId])
+        let struct2 = MGHStruct(id: 1, payload: [1, 2, 3])
+        let result2 = set.update(with: struct2)
+
+        let struct3 = MGHStruct(id: 2, payload: [1, 2, 3])
+        let result3 = set.update(with: struct3)
+
+        XCTAssertEqual(set.value, [
+            struct1,
+            struct2,
+            struct3,
+        ])
+        XCTAssertEqual(result1, struct1)
+        XCTAssertNil(result2)
+        XCTAssertNil(result3)
     }
 
-    func testUpdate_withOwnHashable_replace() {
-        var set: ORSet<OHStruct> = [Fake.ohStruct, Fake.ohStructWithDifferentId]
+    func testUpdate_withOwnHashableStruct() {
+        var set: ORSet<MOHStruct> = [.init(id: 1, payload: [1, 2])]
 
-        _ = set.update(with: Fake.ohStructWithSameId)
+        let result1 = set.update(with: .init(id: 1, payload: [1, 2]))
+        let result2 = set.update(with: .init(id: 1, payload: [1, 2, 3]))
+        let result3 = set.update(with: .init(id: 2, payload: [1, 2]))
 
-        XCTAssertEqual(set.value, [Fake.ohStructWithSameId, Fake.ohStructWithDifferentId])
+        XCTAssertEqual(set.value, [
+            .init(id: 1, payload: [1, 2, 3]),
+            .init(id: 2, payload: [1, 2]),
+        ])
+        XCTAssertEqual(result1, .init(id: 1, payload: [1, 2]))
+        XCTAssertEqual(result2, .init(id: 1, payload: [1, 2, 3]))
+        XCTAssertNil(result3)
     }
 }

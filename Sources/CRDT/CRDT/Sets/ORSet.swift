@@ -5,13 +5,18 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Codable {
+public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Codable, T: Mergable {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
     public var value: Set<T> {
-        return Set(payload.map { $0.value })
+        return Set(valueArray)
     }
+
+    private var valueArray: [T] {
+        payload.map { $0.value }
+    }
+
     var payload: TPSet<Pair>
 
     public init() {
@@ -56,7 +61,28 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Co
     }
 
     public mutating func merge(_ set: ORSet<T>) {
+        let oldSet = self
+
         payload.merge(set.payload)
+
+        let dict: [T: Set<T>] = oldSet.valueArray.reduce(into: [:]) { (result, value) in
+            guard var set = result[value] else {
+                result[value] = [value]
+                return
+            }
+
+            set.insert(value)
+            result[value] = set
+        }
+
+        dict.forEach { key, set in
+            guard var value = set.first, set.count > 1 else {
+                return
+            }
+
+            set.dropFirst().forEach { value.merge($0) }
+            update(with: value)
+        }
     }
 
     public func hasConflict(with crdt: ORSet<T>) -> Bool {
