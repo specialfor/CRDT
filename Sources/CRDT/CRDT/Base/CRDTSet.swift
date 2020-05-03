@@ -21,6 +21,7 @@ public protocol CRDTUpdatableSet: CRDTSet {
 }
 
 extension CRDTUpdatableSet where Self: CRDTRemovableSet {
+    @discardableResult
     public mutating func update(with newMember: Element) -> Element? {
         let oldValue = remove(newMember)
         insert(newMember)

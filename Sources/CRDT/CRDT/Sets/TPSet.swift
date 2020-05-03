@@ -9,24 +9,29 @@ public struct TPSet<T: Hashable>: CRDTRemovableSet {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
-    public var value: Set<T> {
-        return addedValues.subtracting(removedValues)
-    }
+    public private(set) var value: Set<T>
     var addedValues: Set<T>
     var removedValues: Set<T>
 
     public init() {
         addedValues = []
         removedValues = []
+        value = []
     }
 
     public init(arrayLiteral elements: Element...) {
         self.init()
         addedValues = Set(elements)
+        value = addedValues
     }
 
     @discardableResult
     public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
+        defer {
+            if !removedValues.contains(newMember) {
+                value.insert(newMember)
+            }
+        }
         return addedValues.insert(newMember)
     }
 
@@ -34,6 +39,7 @@ public struct TPSet<T: Hashable>: CRDTRemovableSet {
     public mutating func remove(_ member: T) -> T? {
         if addedValues.contains(member), !removedValues.contains(member) {
             removedValues.insert(member)
+            value.remove(member)
             return member
         }
         return nil
@@ -42,6 +48,7 @@ public struct TPSet<T: Hashable>: CRDTRemovableSet {
     public mutating func merge(_ set: TPSet<T>) {
         addedValues.formUnion(set.addedValues)
         removedValues.formUnion(set.removedValues)
+        value = addedValues.subtracting(removedValues)
     }
 
     public func hasConflict(with crdt: TPSet<T>) -> Bool {
@@ -82,4 +89,22 @@ extension TPSet {
 
 // MARK: - Codable
 
-extension TPSet: Codable where T: Codable {}
+extension TPSet: Codable where T: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case addedValues
+        case removedValues
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        addedValues = try container.decode(Set<T>.self, forKey: .addedValues)
+        removedValues = try container.decode(Set<T>.self, forKey: .removedValues)
+        value = addedValues.subtracting(removedValues)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(addedValues, forKey: .addedValues)
+        try container.encode(removedValues, forKey: .removedValues)
+    }
+}

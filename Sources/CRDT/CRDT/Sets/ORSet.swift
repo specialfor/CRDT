@@ -9,18 +9,17 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Me
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
-    public var value: Set<T> {
-        return Set(valueArray)
-    }
+    public var value: Set<T>
 
     private var valueArray: [T] {
-        payload.map { $0.value }
+        return payload.map { $0.value }
     }
 
     var payload: TPSet<Pair>
 
     public init() {
         payload = []
+        value = []
     }
 
     public init(arrayLiteral elements: T...) {
@@ -28,8 +27,9 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Me
     }
 
     public init<U: Sequence>(_ sequence: U) where U.Element == T {
-        payload = []
+        self.init()
         sequence.forEach { insert($0) }
+        value = Set(valueArray)
     }
 
     public mutating func assign(_ newValue: Set<T>) {
@@ -42,12 +42,14 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Me
 
         valueDiff.forEach { remove($0) }
         newValueDiff.forEach { insert($0) }
+        value = Set(valueArray)
     }
 
     @discardableResult
     public mutating func insert(_ newMember: T) -> (inserted: Bool, memberAfterInsert: T) {
         let isContained = contains(newMember)
         _ = payload.insert(.init(value: newMember, tag: .unique))
+        value.insert(newMember)
         return (!isContained, newMember)
     }
 
@@ -57,6 +59,10 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Me
         pairs.forEach { _ = payload.remove($0) }
 
         let isRemoved = !pairs.isEmpty
+        if isRemoved {
+            value.remove(member)
+        }
+
         return isRemoved ? member : nil
     }
 
@@ -83,6 +89,8 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Me
             set.dropFirst().forEach { value.merge($0) }
             update(with: value)
         }
+
+        value = Set(valueArray)
     }
 
     public func hasConflict(with crdt: ORSet<T>) -> Bool {
@@ -131,4 +139,21 @@ extension ORSet: Equatable {
 
 // MARK: - Codable
 
-extension ORSet: Codable where T: Codable {}
+extension ORSet: Codable where T: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case payload
+    }
+
+    public init(from decoder: Decoder) throws {
+        self.init()
+
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        payload = try container.decode(TPSet<Pair>.self, forKey: .payload)
+        value = Set(valueArray)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(payload, forKey: .payload)
+    }
+}
