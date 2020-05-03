@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 01.05.2020.
 //
 
-public struct VectorStamp: Codable {
+public struct VectorStamp {
     static let initial: VectorStamp = [Device.id: 0]
 
     public typealias Elements = [Device.ID: Int]
@@ -124,3 +124,7 @@ extension VectorStamp: Collection {
         return elements.index(after: i)
     }
 }
+
+// MARK: - Codable
+
+extension VectorStamp: Codable {}

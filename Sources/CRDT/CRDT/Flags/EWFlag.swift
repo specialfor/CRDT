@@ -68,3 +68,7 @@ extension EWFlag: Equatable {
         return lhs.payload == rhs.payload
     }
 }
+
+// MARK: - Codable
+
+extension EWFlag: Codable {}

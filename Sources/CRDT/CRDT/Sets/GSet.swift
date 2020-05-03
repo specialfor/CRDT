@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct GSet<T: Hashable>: CRDTSet where T: Codable {
+public struct GSet<T: Hashable>: CRDTSet {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
@@ -67,3 +67,7 @@ extension GSet: Equatable {
         return lhs.value == rhs.value
     }
 }
+
+// MARK: - Codable
+
+extension GSet: Codable where T: Codable {}

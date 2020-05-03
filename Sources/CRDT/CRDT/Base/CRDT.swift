@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public protocol CRDT: Mergable, Comparable, Hashable, Codable {
+public protocol CRDT: Mergable, Comparable, Hashable {
     associatedtype NestedValue
 
     var value: NestedValue { get }

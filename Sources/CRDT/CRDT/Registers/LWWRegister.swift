@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct LWWRegister<T: Hashable>: CRDT where T: Codable {
+public struct LWWRegister<T: Hashable>: CRDT {
     public var value: T {
         get { return _value }
         set {
@@ -63,3 +63,7 @@ public struct LWWRegister<T: Hashable>: CRDT where T: Codable {
             && lhs.timestamp == rhs.timestamp
     }
 }
+
+// MARK: - Codable
+
+extension LWWRegister: Codable where T: Codable {}

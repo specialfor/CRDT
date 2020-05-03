@@ -6,7 +6,7 @@
 //  Copyright © 2020 Volodymyr Hryhoriev. All rights reserved.
 //
 
-public struct VersionVector: Codable {
+public struct VersionVector {
     static let initial: VersionVector = [0]
 
     public private(set) var elements: [Int] = []
@@ -118,3 +118,7 @@ extension VersionVector: Hashable {
         return lhs.elements == rhs.elements
     }
 }
+
+// MARK: - Codable
+
+extension VersionVector: Codable {}

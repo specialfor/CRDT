@@ -69,3 +69,7 @@ public struct PNCounter: CRDT {
             && lhs.decrementCounter == rhs.decrementCounter
     }
 }
+
+// MARK: - Codable
+
+extension PNCounter: Codable {}

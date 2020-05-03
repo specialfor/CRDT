@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 20.04.2020.
 //
 
-public struct ORMap<Key: Hashable, Value: Mergable>: CRDT where Key: Codable, Value: Codable {
+public struct ORMap<Key: Hashable, Value: Mergable>: CRDT {
     public var value: [Key: Value] {
         return payload.value.reduce(into: [:]) { $0[$1.key] = $1.value }
     }
@@ -35,7 +35,7 @@ public struct ORMap<Key: Hashable, Value: Mergable>: CRDT where Key: Codable, Va
 // MARK: - Pair
 
 extension ORMap {
-    struct Pair: Hashable, Codable, Mergable {
+    struct Pair: Hashable, Mergable {
         let key: Key
         var value: Value?
 
@@ -53,6 +53,8 @@ extension ORMap {
         }
     }
 }
+
+extension ORMap.Pair: Codable where Key: Codable, Value: Codable {}
 
 // MARK: - ExpressibleByDictionaryLiteral
 
@@ -112,3 +114,7 @@ extension ORMap: Collection {
         return value[position]
     }
 }
+
+// MARK: - Codable
+
+extension ORMap: Codable where Key: Codable, Value: Codable {}

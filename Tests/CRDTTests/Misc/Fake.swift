@@ -17,7 +17,7 @@ enum Fake {
     static let mohStructWithDifferentId = MOHStruct(id: 2, payload: [3, 4])
 }
 
-struct MGHStruct: Hashable, Mergable, Codable {
+struct MGHStruct: Hashable, Mergable {
     var id: Int
     var payload: AWSet<Int>
 
@@ -30,7 +30,7 @@ struct MGHStruct: Hashable, Mergable, Codable {
     }
 }
 
-struct MOHStruct: Hashable, Mergable, Codable {
+struct MOHStruct: Hashable, Mergable {
     var id: Int
     var payload: AWSet<Int>
 

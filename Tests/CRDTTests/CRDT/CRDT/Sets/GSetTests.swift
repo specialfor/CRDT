@@ -134,4 +134,15 @@ final class GSetTests: TestCase {
         XCTAssertNotEqual(set, notDisjointSet)
         XCTAssertNotEqual(disjointSet, notDisjointSet)
     }
+
+    // MARK: - Codable
+
+    func testCodableConformance() {
+        let set: GSet<Int> = [1, 2, 3]
+
+        let data = try! JSONEncoder().encode(set)
+        let dictionary = try! JSONDecoder().decode([String: Set<Int>].self, from: data)
+
+        XCTAssertEqual(dictionary, ["value": [1, 2, 3]])
+    }
 }

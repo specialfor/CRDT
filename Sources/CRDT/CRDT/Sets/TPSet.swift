@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct TPSet<T: Hashable>: CRDTRemovableSet where T: Codable {
+public struct TPSet<T: Hashable>: CRDTRemovableSet {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
@@ -79,3 +79,7 @@ extension TPSet {
             && lhs.removedValues == rhs.removedValues
     }
 }
+
+// MARK: - Codable
+
+extension TPSet: Codable where T: Codable {}

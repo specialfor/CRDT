@@ -5,7 +5,7 @@
 //  Created by Volodymyr Hryhoriev on 19.04.2020.
 //
 
-public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Codable, T: Mergable {
+public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Mergable {
     #warning("Is it possible to omit line below?")
     public typealias Element = T
 
@@ -93,11 +93,13 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Co
 // MARK: - Pair
 
 extension ORSet {
-    struct Pair: Hashable, Codable {
+    struct Pair: Hashable {
         let value: T
         let tag: UniqueTag
     }
 }
+
+extension ORSet.Pair: Codable where T: Codable {}
 
 // MARK: - Comparable
 
@@ -126,3 +128,7 @@ extension ORSet: Equatable {
         return lhs.payload == rhs.payload
     }
 }
+
+// MARK: - Codable
+
+extension ORSet: Codable where T: Codable {}

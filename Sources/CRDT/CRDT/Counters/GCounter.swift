@@ -57,3 +57,7 @@ extension GCounter: Equatable {
         return lhs.vector == rhs.vector
     }
 }
+
+// MARK: - Codable
+
+extension GCounter: Codable {}
