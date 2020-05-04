@@ -7,6 +7,8 @@
 //
 
 public struct MVRegister<T: Hashable>: CRDT {
+    #warning("Need to change `value` type to Set<T>.")
+    #warning("Old `value` property should be renamed to `payload`.")
     public internal(set) var value: Set<Pair>
 
     public init(value: T) {
@@ -77,17 +79,37 @@ public struct MVRegister<T: Hashable>: CRDT {
 
 extension MVRegister: Comparable {
     public static func < (lhs: MVRegister<T>, rhs: MVRegister<T>) -> Bool {
-        return lhs <= rhs && lhs != rhs
+        return strictCompare(lhs, rhs, comparator: <=)
+    }
+
+    static func strictCompare(_ lhs: MVRegister<T>,
+                        _ rhs: MVRegister<T>,
+                        comparator: (VectorStamp, VectorStamp) -> Bool) -> Bool {
+        let lhsVectors = lhs.value.map { $0.vector }
+        let rhsVectors = rhs.value.map { $0.vector }
+
+        var result = true
+        var allEqual = true
+
+        for i in lhsVectors {
+            for j in rhsVectors {
+                result = result && comparator(i, j)
+                if i != j {
+                    allEqual = false
+                }
+            }
+        }
+
+        return result && !allEqual
     }
 
     public static func <= (lhs: MVRegister<T>, rhs: MVRegister<T>) -> Bool {
-        return compare(lhs, rhs, comparator: <=) { $1.isSuperset(of: $0) }
+        return compare(lhs, rhs, comparator: <=)
     }
 
     static func compare(_ lhs: MVRegister<T>,
                         _ rhs: MVRegister<T>,
-                        comparator: (VectorStamp, VectorStamp) -> Bool,
-                        subsetter: (MVRegister<T>.NestedValue, MVRegister<T>.NestedValue) -> Bool) -> Bool {
+                        comparator: (VectorStamp, VectorStamp) -> Bool) -> Bool {
         let lhsVectors = lhs.value.map { $0.vector }
         let rhsVectors = rhs.value.map { $0.vector }
 
@@ -99,15 +121,15 @@ extension MVRegister: Comparable {
             }
         }
 
-        return result || subsetter(lhs.value, rhs.value)
+        return result
     }
 
     public static func >= (lhs: MVRegister<T>, rhs: MVRegister<T>) -> Bool {
-        return compare(lhs, rhs, comparator: >=) { $1.isSubset(of: $0) }
+        return compare(lhs, rhs, comparator: >=)
     }
 
     public static func > (lhs: MVRegister<T>, rhs: MVRegister<T>) -> Bool {
-        return lhs >= rhs && lhs != rhs
+        return strictCompare(lhs, rhs, comparator: >=)
     }
 }
 
@@ -125,6 +147,14 @@ extension MVRegister {
     public struct Pair: Hashable {
         public internal(set) var value: T
         public internal(set) var vector: VectorStamp
+
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(value)
+        }
+
+        public static func == (lhs: Pair, rhs: Pair) -> Bool {
+            return lhs.value == rhs.value
+        }
     }
 }
 
