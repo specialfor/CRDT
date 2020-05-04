@@ -67,17 +67,15 @@ public struct ORSet<T: Hashable>: CRDTRemovableSet, CRDTUpdatableSet where T: Me
     }
 
     public mutating func merge(_ set: ORSet<T>) {
-        let oldSet = self
-
         payload.merge(set.payload)
 
-        let dict: [T: Set<T>] = oldSet.valueArray.reduce(into: [:]) { (result, value) in
+        let dict: [T: [T]] = valueArray.reduce(into: [:]) { (result, value) in
             guard var set = result[value] else {
                 result[value] = [value]
                 return
             }
 
-            set.insert(value)
+            set.append(value)
             result[value] = set
         }
 
