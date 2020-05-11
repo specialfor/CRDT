@@ -7,7 +7,7 @@ Swift implementation of state based CRDT (CvRDT)
 
 Conflict-free Replicated Data types or CRDT for short are data types which support semilattice properties and able to resolve conflicts connected with concurrent changes automatically. They were designed as a solution for data synchonization problem in distibuted systems, that's why they are highly connected with _version vector_.
 
-More info in [CRDT whitepaper](https://hal.inria.fr/inria-00555588/document) and [Version vector (wiki)](https://en.wikipedia.org/wiki/Version_vector)
+More info in [CRDT whitepaper](https://hal.inria.fr/inria-00555588/document) (or in [medium article](https://medium.com/@amberovsky/crdt-conflict-free-replicated-data-types-b4bfc8459d26) if you don't want to read a lot) and [Version vector (wiki)](https://en.wikipedia.org/wiki/Version_vector)
 
 ## 💼 Portfolio of implemented CvRDT
 
